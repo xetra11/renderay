@@ -1,40 +1,39 @@
+
+
 #include <stdio.h>
 #include <stdlib.h>
-#include "array_filler.h"
+#include "renderay.h"
 
 #define ARRAY_HEIGHT 30
 #define ARRAY_WIDTH 30
 
 /*Prototypen*/
 //Helper
-void printArray(char* arrayToPrint, ArrayDimension dimension);
+void printArray(Canvas* canvas, ArrayDimension dimension);
 //Examples
-void renderSmiley(char* arrayToSmile);
-void renderCross(char* arrayToCross);
-void renderSudokuField(char* arrayToRender);
+void renderSmiley(Canvas* canvas);
+void renderCross(Canvas* canvas);
+void renderSudokuField(Canvas* canvas);
 
 int main(void){
 
-  Canvas canvas;
-  ArrayDimension arrayDimension;
+  Canvas* canvas = createNewCanvas(ARRAY_HEIGHT, ARRAY_WIDTH);
 
-  arrayDimension.height = ARRAY_HEIGHT;
-  arrayDimension.width = ARRAY_WIDTH;
-  char testArray[arrayDimension.height][arrayDimension.width];
-
-  initializeArray(testArray[0], 32, ARRAY_HEIGHT, ARRAY_WIDTH);
-  renderSmiley(testArray[0]);
+  initializeArray(canvas, 32, ARRAY_HEIGHT, ARRAY_WIDTH);
+  renderSmiley(canvas);
   // renderCross(testArray[0]);
   // renderSudokuField(testArray[0]);
   // printArray(testArray[0], ARRAY_HEIGHT, ARRAY_WIDTH);
-  printArray(testArray[0], arrayDimension);
+  printArray(canvas, canvas->dimension);
 
   return 0;
 }
 
 /* Helper / Examples */
 
-void renderSmiley(char* arrayToSmile){
+void renderSmiley(Canvas* canvas){
+  char* arrayToSmile = canvas->array;
+
   customFillArrayHorizontalLine(arrayToSmile, '|', 1, 0, 3, ARRAY_WIDTH);
   customFillArrayHorizontalLine(arrayToSmile, 'o', 0, 1, 1, ARRAY_WIDTH);
   customFillArrayHorizontalLine(arrayToSmile, 'o', 4, 1, 1, ARRAY_WIDTH);
@@ -48,12 +47,16 @@ void renderSmiley(char* arrayToSmile){
   customFillArrayHorizontalLine(arrayToSmile, 'o', 1, 4, 3, ARRAY_WIDTH);
 }
 
-void renderCross(char* arrayToCross){
+void renderCross(Canvas* canvas){
+  char* arrayToCross = canvas->array;
+
   fillArrayHorizontalLine(arrayToCross, '-', 2, ARRAY_WIDTH);
   fillArrayVerticalLine(arrayToCross, '|', 2, ARRAY_WIDTH, ARRAY_HEIGHT);
 }
 
-void renderSudokuField(char* arrayToRender){
+void renderSudokuField(Canvas* canvas){
+  char* arrayToRender = canvas->array;
+
   fillArrayHorizontalLine(arrayToRender, '-', 1, ARRAY_WIDTH);
   fillArrayVerticalLine(arrayToRender, '|', 6, ARRAY_WIDTH, ARRAY_HEIGHT);
   fillArrayVerticalLine(arrayToRender, '|', 11, ARRAY_WIDTH, ARRAY_HEIGHT);
@@ -65,9 +68,10 @@ void renderSudokuField(char* arrayToRender){
   fillArrayHorizontalLine(arrayToRender, '-',21, ARRAY_WIDTH);
 }
 
-void printArray(char* arrayToPrint, ArrayDimension dimension){
+void printArray(Canvas* canvas, ArrayDimension dimension){
   int iterator_Y;
   int iterator_X;
+  char* arrayToPrint = canvas->array;
 
   for(iterator_Y = 0; iterator_Y < dimension.height; iterator_Y++){
     for(iterator_X = 0; iterator_X < dimension.width; iterator_X++){
