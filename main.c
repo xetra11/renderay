@@ -21,7 +21,7 @@ int main(void){
 
   renderSmiley(canvas);
   /* renderCross(canvas); */
-  // renderSudokuField(testArray[0]);
+  /* renderSudokuField(canvas); */
   // printArray(testArray[0], ARRAY_HEIGHT, ARRAY_WIDTH);
   printArray(canvas, canvas->dimension);
 
@@ -31,40 +31,34 @@ int main(void){
 /* Helper / Examples */
 
 void renderSmiley(Canvas* canvas){
-  char* arrayToSmile = canvas->array;
-
-  customFillArrayHorizontalLine(arrayToSmile, '|', 1, 0, 3, ARRAY_WIDTH);
-  customFillArrayHorizontalLine(arrayToSmile, 'o', 0, 1, 1, ARRAY_WIDTH);
-  customFillArrayHorizontalLine(arrayToSmile, 'o', 4, 1, 1, ARRAY_WIDTH);
-  customFillArrayHorizontalLine(arrayToSmile, '@', 1, 2, 1, ARRAY_WIDTH);
-  customFillArrayHorizontalLine(arrayToSmile, '@', 3, 2, 1, ARRAY_WIDTH);
-  customFillArrayHorizontalLine(arrayToSmile, 'o', 0, 2, 1, ARRAY_WIDTH);
-  customFillArrayHorizontalLine(arrayToSmile, 'o', 4, 2, 1, ARRAY_WIDTH);
-  customFillArrayHorizontalLine(arrayToSmile, 'o', 0, 3, 1, ARRAY_WIDTH);
-  customFillArrayHorizontalLine(arrayToSmile, 'o', 4, 3, 1, ARRAY_WIDTH);
-  customFillArrayHorizontalLine(arrayToSmile, '-', 2, 3, 1 , ARRAY_WIDTH);
-  customFillArrayHorizontalLine(arrayToSmile, 'o', 1, 4, 3, ARRAY_WIDTH);
+  customFillArrayHorizontalLine(canvas, '|', 1, 0, 3);
+  customFillArrayHorizontalLine(canvas, 'o', 0, 1, 1);
+  customFillArrayHorizontalLine(canvas, 'o', 4, 1, 1);
+  customFillArrayHorizontalLine(canvas, '@', 1, 2, 1);
+  customFillArrayHorizontalLine(canvas, '@', 3, 2, 1);
+  customFillArrayHorizontalLine(canvas, 'o', 0, 2, 1);
+  customFillArrayHorizontalLine(canvas, 'o', 4, 2, 1);
+  customFillArrayHorizontalLine(canvas, 'o', 0, 3, 1);
+  customFillArrayHorizontalLine(canvas, 'o', 4, 3, 1);
+  customFillArrayHorizontalLine(canvas, '-', 2, 3, 1);
+  customFillArrayHorizontalLine(canvas, 'o', 1, 4, 3);
 }
 
 void renderCross(Canvas* canvas){
-  char* arrayToCross = canvas->array;
-
-  fillArrayHorizontalLine(arrayToCross, '-', 2, ARRAY_WIDTH);
-  fillArrayVerticalLine(arrayToCross, '|', 2, ARRAY_WIDTH, ARRAY_HEIGHT);
+  fillArrayHorizontalLine(canvas, '-', 2);
+  fillArrayVerticalLine(canvas, '|', 2);
 }
 
 void renderSudokuField(Canvas* canvas){
-  char* arrayToRender = canvas->array;
-
-  fillArrayHorizontalLine(arrayToRender, '-', 1, ARRAY_WIDTH);
-  fillArrayVerticalLine(arrayToRender, '|', 6, ARRAY_WIDTH, ARRAY_HEIGHT);
-  fillArrayVerticalLine(arrayToRender, '|', 11, ARRAY_WIDTH, ARRAY_HEIGHT);
-  fillArrayVerticalLine(arrayToRender, '|', 16, ARRAY_WIDTH, ARRAY_HEIGHT);
-  fillArrayVerticalLine(arrayToRender, '|', 21, ARRAY_WIDTH, ARRAY_HEIGHT);
-  fillArrayHorizontalLine(arrayToRender, '-', 6, ARRAY_WIDTH);
-  fillArrayHorizontalLine(arrayToRender, '-', 11, ARRAY_WIDTH);
-  fillArrayHorizontalLine(arrayToRender, '-', 16, ARRAY_WIDTH);
-  fillArrayHorizontalLine(arrayToRender, '-',21, ARRAY_WIDTH);
+  fillArrayHorizontalLine(canvas, '-', 1);
+  fillArrayVerticalLine(canvas, '|', 6);
+  fillArrayVerticalLine(canvas, '|', 11);
+  fillArrayVerticalLine(canvas, '|', 16);
+  fillArrayVerticalLine(canvas, '|', 21);
+  fillArrayHorizontalLine(canvas, '-', 6);
+  fillArrayHorizontalLine(canvas, '-', 11);
+  fillArrayHorizontalLine(canvas, '-', 16);
+  fillArrayHorizontalLine(canvas, '-',21);
 }
 
 void printArray(Canvas* canvas, ArrayDimension dimension){

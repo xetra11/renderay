@@ -56,7 +56,9 @@ void initializeArray(Canvas* newCanvas, char fillSymbol){
   }
 }
 
-void customFillArrayHorizontalLine(char* arrayToFill, char fillSymbol, int offset, int row, int count, int arrayWidth ){
+void customFillArrayHorizontalLine(Canvas* canvas, char fillSymbol, int offset, int row, int count){
+  char* arrayToFill = canvas->array;
+  int arrayWidth =  canvas->dimension.width;
   int iterator;
   int posToDrawAt;
   int rowToStartDrawing;
@@ -68,7 +70,9 @@ void customFillArrayHorizontalLine(char* arrayToFill, char fillSymbol, int offse
   }
 }
 
-void customfillArrayVerticalLine(char* arrayToFill, char fillSymbol, int offset, int column, int count, int arrayWidth){
+void customfillArrayVerticalLine(Canvas* canvas, char fillSymbol, int offset, int column, int count){
+  char* arrayToFill = canvas->array;
+  int arrayWidth = canvas->dimension.width;
   int iterator;
   int posToDrawAt;
   int columnToStartDrawing;
@@ -80,7 +84,9 @@ void customfillArrayVerticalLine(char* arrayToFill, char fillSymbol, int offset,
   }
 }
 
-void fillArrayHorizontalLine(char* arrayToFill, char fillSymbol, int row, int arrayWidth){
+void fillArrayHorizontalLine(Canvas* canvas, char fillSymbol, int row){
+  char* arrayToFill = canvas->array;
+  int arrayWidth = canvas->dimension.width;
   int iterator;
   int posToDrawAt;
   int rowToStartDrawing;
@@ -92,7 +98,10 @@ void fillArrayHorizontalLine(char* arrayToFill, char fillSymbol, int row, int ar
   }
 }
 
-void fillArrayVerticalLine(char* arrayToFill, char fillSymbol, int column, int arrayWidth, int arrayHeight){
+void fillArrayVerticalLine(Canvas* canvas, char fillSymbol, int column){
+  char* arrayToFill = canvas->array;
+  int arrayHeight = canvas->dimension.height;
+  int arrayWidth = canvas->dimension.width;
   int iterator;
   int posToDrawAt;
   int columnToStartDrawing;
