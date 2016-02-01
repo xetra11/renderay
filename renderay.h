@@ -6,7 +6,8 @@ description: Renderay tries to simplify the rendering of arrays.
              customizable functions to draw characters into a
              character array.
 documentation: How to:
-               To start rendering an array and printing it to the screen th               e user has to create a "Canvas" type/object first. A Canvas
+               To start rendering an array and printing it to the screen the
+               user has to create a "Canvas" type/object first. A Canvas
                holds the dimension and the pointer to the corresponding
                array to easy the use of functions due slim parameterlist
                and to capsule canvas-specific state like the width and the
@@ -40,7 +41,7 @@ void customFillArrayHorizontalLine(char* arrayToFill, char fillSymbol,int offset
 void customfillArrayVerticalLine(char* arrayToFill, char fillSymbol, int offset, int column, int count, int arrayWidth);
 void fillArrayHorizontalLine(char* arrayToFill, char fillSymbol, int row, int arrayWidth);
 void fillArrayVerticalLine(char* arrayToFill, char fillSymbol, int column, int arrayWidth, int arrayHeight);
-void initializeArray(Canvas* canvas, char fillSymbol, int height, int width);
+void initializeArray(Canvas* canvas, char fillSymbol);
 Canvas getNewCanvas(int height, int width, char initValues);
 
 #endif

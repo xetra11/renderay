@@ -21,32 +21,37 @@ date: 29.01.2016
 dependencies: renderay.h
 */
 
-
 #include <stdlib.h>
 #include <stdio.h>
 #include "renderay.h"
 
-/***************** API *************************/
-
 Canvas* createNewCanvas(int height, int width){
   ArrayDimension dimension ;
   Canvas* newCanvas = malloc(sizeof(Canvas));
+  char* array = calloc(height, width);
+
+  /* printf("h: %d, w: %d\n", height, width); */
 
   dimension.height = height;
   dimension.width = width;
-  newCanvas->dimension = dimension ;
+  newCanvas->dimension = dimension;
+  newCanvas->array = array;
+
+  initializeArray(newCanvas, 32);
 
   return newCanvas;
 }
 
-void initializeArray(Canvas* newCanvas, char fillSymbol, int height, int width){
+void initializeArray(Canvas* newCanvas, char fillSymbol){
   char* arrayToInit = newCanvas->array;
+  int height = newCanvas->dimension.height;
+  int width = newCanvas->dimension.width;
   int iterator_Y;
   int iterator_X;
 
   for(iterator_Y = 0; iterator_Y < height; iterator_Y++){
     for(iterator_X = 0; iterator_X < width; iterator_X++){
-      *(arrayToInit+iterator_X+(iterator_Y*width)) = fillSymbol;
+      arrayToInit[iterator_X + iterator_Y*width] = fillSymbol;
     }
   }
 }
@@ -59,7 +64,7 @@ void customFillArrayHorizontalLine(char* arrayToFill, char fillSymbol, int offse
   for(iterator = 0; iterator < count; iterator++){
     rowToStartDrawing = row * arrayWidth;
     posToDrawAt = iterator + offset;
-    *(arrayToFill+(posToDrawAt+rowToStartDrawing)) = fillSymbol;
+    arrayToFill[posToDrawAt+rowToStartDrawing] = fillSymbol;
   }
 }
 
@@ -71,7 +76,7 @@ void customfillArrayVerticalLine(char* arrayToFill, char fillSymbol, int offset,
   for(iterator = 0; iterator < count; iterator++){
     columnToStartDrawing = column;
     posToDrawAt = (iterator + offset) * arrayWidth;
-    *(arrayToFill+(posToDrawAt+columnToStartDrawing)) = fillSymbol;
+    arrayToFill[posToDrawAt+columnToStartDrawing] = fillSymbol;
   }
 }
 
@@ -83,7 +88,7 @@ void fillArrayHorizontalLine(char* arrayToFill, char fillSymbol, int row, int ar
   for(iterator = 0; iterator < arrayWidth; iterator++){
     rowToStartDrawing = row * arrayWidth;
     posToDrawAt = iterator;
-    *(arrayToFill+(posToDrawAt+rowToStartDrawing)) = fillSymbol;
+    arrayToFill[posToDrawAt+rowToStartDrawing] = fillSymbol;
   }
 }
 

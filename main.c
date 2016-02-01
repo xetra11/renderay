@@ -1,11 +1,9 @@
-
-
 #include <stdio.h>
 #include <stdlib.h>
 #include "renderay.h"
 
-#define ARRAY_HEIGHT 30
-#define ARRAY_WIDTH 30
+#define ARRAY_HEIGHT 5
+#define ARRAY_WIDTH 5
 
 /*Prototypen*/
 //Helper
@@ -19,9 +17,10 @@ int main(void){
 
   Canvas* canvas = createNewCanvas(ARRAY_HEIGHT, ARRAY_WIDTH);
 
-  initializeArray(canvas, 32, ARRAY_HEIGHT, ARRAY_WIDTH);
+  //initializeArray(canvas, '.');
+
   renderSmiley(canvas);
-  // renderCross(testArray[0]);
+  /* renderCross(canvas); */
   // renderSudokuField(testArray[0]);
   // printArray(testArray[0], ARRAY_HEIGHT, ARRAY_WIDTH);
   printArray(canvas, canvas->dimension);
