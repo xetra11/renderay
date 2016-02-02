@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include "renderay.h"
 
-#define ARRAY_HEIGHT 5
-#define ARRAY_WIDTH 5
+#define ARRAY_HEIGHT 30
+#define ARRAY_WIDTH 50
 
 /*Prototypen*/
 //Helper
@@ -13,16 +13,17 @@ void renderSmiley(Canvas* canvas);
 void renderCross(Canvas* canvas);
 void renderSudokuField(Canvas* canvas);
 
+void renderTopHeader(Canvas* canvas, int gapSize);
+
 int main(void){
 
   Canvas* canvas = createNewCanvas(ARRAY_HEIGHT, ARRAY_WIDTH);
 
-  //initializeArray(canvas, '.');
+  initializeArray(canvas, '.');
 
-  renderSmiley(canvas);
+  /* renderSmiley(canvas); */
   /* renderCross(canvas); */
-  /* renderSudokuField(canvas); */
-  // printArray(testArray[0], ARRAY_HEIGHT, ARRAY_WIDTH);
+  renderSudokuField(canvas);
   printArray(canvas, canvas->dimension);
 
   return 0;
@@ -50,15 +51,17 @@ void renderCross(Canvas* canvas){
 }
 
 void renderSudokuField(Canvas* canvas){
-  fillArrayHorizontalLine(canvas, '-', 1);
-  fillArrayVerticalLine(canvas, '|', 6);
-  fillArrayVerticalLine(canvas, '|', 11);
-  fillArrayVerticalLine(canvas, '|', 16);
-  fillArrayVerticalLine(canvas, '|', 21);
-  fillArrayHorizontalLine(canvas, '-', 6);
-  fillArrayHorizontalLine(canvas, '-', 11);
-  fillArrayHorizontalLine(canvas, '-', 16);
-  fillArrayHorizontalLine(canvas, '-',21);
+  renderTopHeader(canvas, 2);
+}
+
+void renderTopHeader(Canvas* canvas, int gapSize){
+  int counter = 0;
+  int iterator;
+  int maxWidth = canvas->dimension.width;
+
+  for(iterator = gapSize; iterator < maxWidth; iterator+=gapSize+1){
+    fillPoint(canvas, 'A'+ counter++, iterator, 0);
+  }
 }
 
 void printArray(Canvas* canvas, ArrayDimension dimension){
@@ -68,7 +71,7 @@ void printArray(Canvas* canvas, ArrayDimension dimension){
 
   for(iterator_Y = 0; iterator_Y < dimension.height; iterator_Y++){
     for(iterator_X = 0; iterator_X < dimension.width; iterator_X++){
-      printf("%c", *(arrayToPrint+(iterator_Y* dimension.width) + iterator_X));
+      printf("%c", arrayToPrint[iterator_Y* dimension.width + iterator_X]);
     }
     printf("\n");
   }

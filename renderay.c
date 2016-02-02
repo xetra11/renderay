@@ -16,7 +16,7 @@ documentation: How to:
                characters at the customized positions. The usecase of
                this library is to create custom functions to draw with the
                help of the rendering functions provided by Renderay.
-version: 0.1
+version: 0.9
 date: 29.01.2016
 dependencies: renderay.h
 */
@@ -29,8 +29,6 @@ Canvas* createNewCanvas(int height, int width){
   ArrayDimension dimension ;
   Canvas* newCanvas = malloc(sizeof(Canvas));
   char* array = calloc(height, width);
-
-  /* printf("h: %d, w: %d\n", height, width); */
 
   dimension.height = height;
   dimension.width = width;
@@ -54,6 +52,17 @@ void initializeArray(Canvas* newCanvas, char fillSymbol){
       arrayToInit[iterator_X + iterator_Y*width] = fillSymbol;
     }
   }
+}
+
+void fillPoint(Canvas* canvas, char fillSymbol, int x, int y){
+  char* arrayToFill = canvas->array;
+  int maxWidth = canvas->dimension.width;
+  int maxHeight = canvas->dimension.height;
+
+  if(x <= maxWidth && y <= maxHeight){
+    arrayToFill[x+(y*maxWidth)] = fillSymbol;
+  }
+
 }
 
 void customFillArrayHorizontalLine(Canvas* canvas, char fillSymbol, int offset, int row, int count){
@@ -109,6 +118,6 @@ void fillArrayVerticalLine(Canvas* canvas, char fillSymbol, int column){
   for(iterator = 0; iterator < arrayHeight; iterator++){
     columnToStartDrawing = column;
     posToDrawAt = (iterator) * arrayWidth;
-    *(arrayToFill+(posToDrawAt+columnToStartDrawing)) = fillSymbol;
+    arrayToFill[posToDrawAt+columnToStartDrawing] = fillSymbol;
   }
 }
