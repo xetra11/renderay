@@ -16,11 +16,12 @@ documentation: How to:
                characters at the customized positions. The usecase of
                this library is to create custom functions to draw with the
                help of the rendering functions provided by Renderay.
-version: 0.9
+version: 1.0
 date: 29.01.2016
 dependencies: renderay.h
 */
 
+#include <stdarg.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include "renderay.h"
