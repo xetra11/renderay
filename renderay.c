@@ -25,7 +25,7 @@ dependencies: renderay.h
 #include <stdio.h>
 #include "renderay.h"
 
-Canvas* createNewCanvas(int height, int width){
+Canvas* new_Canvas(int height, int width){
   ArrayDimension dimension ;
   Canvas* newCanvas = malloc(sizeof(Canvas));
   char* array = calloc(height, width);
@@ -35,12 +35,12 @@ Canvas* createNewCanvas(int height, int width){
   newCanvas->dimension = dimension;
   newCanvas->array = array;
 
-  initializeArray(newCanvas, 32);
+  canvas_fill(newCanvas, 32);
 
   return newCanvas;
 }
 
-void initializeArray(Canvas* newCanvas, char fillSymbol){
+void canvas_fill(Canvas* newCanvas, char fillSymbol){
   char* arrayToInit = newCanvas->array;
   int height = newCanvas->dimension.height;
   int width = newCanvas->dimension.width;
@@ -54,7 +54,7 @@ void initializeArray(Canvas* newCanvas, char fillSymbol){
   }
 }
 
-void fillPoint(Canvas* canvas, char fillSymbol, int x, int y){
+void canvas_fillPoint(Canvas* canvas, char fillSymbol, int x, int y){
   char* arrayToFill = canvas->array;
   int maxWidth = canvas->dimension.width;
   int maxHeight = canvas->dimension.height;
@@ -62,10 +62,9 @@ void fillPoint(Canvas* canvas, char fillSymbol, int x, int y){
   if(x <= maxWidth && y <= maxHeight){
     arrayToFill[x+(y*maxWidth)] = fillSymbol;
   }
-
 }
 
-void customFillArrayHorizontalLine(Canvas* canvas, char fillSymbol, int offset, int row, int count){
+void canvas_fillLineHorizontalCustom(Canvas* canvas, char fillSymbol, int offset, int row, int count){
   char* arrayToFill = canvas->array;
   int arrayWidth =  canvas->dimension.width;
   int iterator;
@@ -79,7 +78,7 @@ void customFillArrayHorizontalLine(Canvas* canvas, char fillSymbol, int offset, 
   }
 }
 
-void customfillArrayVerticalLine(Canvas* canvas, char fillSymbol, int offset, int column, int count){
+void canvas_fillLineVerticalCustom(Canvas* canvas, char fillSymbol, int offset, int column, int count){
   char* arrayToFill = canvas->array;
   int arrayWidth = canvas->dimension.width;
   int iterator;
@@ -93,7 +92,7 @@ void customfillArrayVerticalLine(Canvas* canvas, char fillSymbol, int offset, in
   }
 }
 
-void fillArrayHorizontalLine(Canvas* canvas, char fillSymbol, int row){
+void canvas_fillLineHorizontal(Canvas* canvas, char fillSymbol, int row){
   char* arrayToFill = canvas->array;
   int arrayWidth = canvas->dimension.width;
   int iterator;
@@ -107,7 +106,7 @@ void fillArrayHorizontalLine(Canvas* canvas, char fillSymbol, int row){
   }
 }
 
-void fillArrayVerticalLine(Canvas* canvas, char fillSymbol, int column){
+void canvas_fillLineVertical(Canvas* canvas, char fillSymbol, int column){
   char* arrayToFill = canvas->array;
   int arrayHeight = canvas->dimension.height;
   int arrayWidth = canvas->dimension.width;

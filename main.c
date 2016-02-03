@@ -21,13 +21,14 @@ void renderCrosses(Canvas* canvas);
 
 int main(void){
 
-  Canvas* canvas = createNewCanvas(ARRAY_HEIGHT, ARRAY_WIDTH);
+  Canvas* canvas = new_Canvas(ARRAY_HEIGHT, ARRAY_WIDTH);
 
-  /* initializeArray(canvas, '.'); */
+  /* canvas_fill(canvas, '.'); */
 
-  /* renderSmiley(canvas); */
+  renderSmiley(canvas);
   /* renderCross(canvas); */
-  renderSudokuField(canvas);
+  /* renderSudokuField(canvas); */
+  /* canvas_fillPoint(canvas, '9', 3,2); */
   printArray(canvas, canvas->dimension);
 
   return 0;
@@ -36,22 +37,22 @@ int main(void){
 /* Helper / Examples */
 
 void renderSmiley(Canvas* canvas){
-  customFillArrayHorizontalLine(canvas, '|', 1, 0, 3);
-  customFillArrayHorizontalLine(canvas, 'o', 0, 1, 1);
-  customFillArrayHorizontalLine(canvas, 'o', 4, 1, 1);
-  customFillArrayHorizontalLine(canvas, '@', 1, 2, 1);
-  customFillArrayHorizontalLine(canvas, '@', 3, 2, 1);
-  customFillArrayHorizontalLine(canvas, 'o', 0, 2, 1);
-  customFillArrayHorizontalLine(canvas, 'o', 4, 2, 1);
-  customFillArrayHorizontalLine(canvas, 'o', 0, 3, 1);
-  customFillArrayHorizontalLine(canvas, 'o', 4, 3, 1);
-  customFillArrayHorizontalLine(canvas, '-', 2, 3, 1);
-  customFillArrayHorizontalLine(canvas, 'o', 1, 4, 3);
+  canvas_fillLineHorizontalCustom(canvas, '|', 1, 0, 3);
+  canvas_fillLineHorizontalCustom(canvas, 'o', 0, 1, 1);
+  canvas_fillLineHorizontalCustom(canvas, 'o', 4, 1, 1);
+  canvas_fillLineHorizontalCustom(canvas, '@', 1, 2, 1);
+  canvas_fillLineHorizontalCustom(canvas, '@', 3, 2, 1);
+  canvas_fillLineHorizontalCustom(canvas, 'o', 0, 2, 1);
+  canvas_fillLineHorizontalCustom(canvas, 'o', 4, 2, 1);
+  canvas_fillLineHorizontalCustom(canvas, 'o', 0, 3, 1);
+  canvas_fillLineHorizontalCustom(canvas, 'o', 4, 3, 1);
+  canvas_fillLineHorizontalCustom(canvas, '-', 2, 3, 1);
+  canvas_fillLineHorizontalCustom(canvas, 'o', 1, 4, 3);
 }
 
 void renderCross(Canvas* canvas){
-  fillArrayHorizontalLine(canvas, '-', 2);
-  fillArrayVerticalLine(canvas, '|', 2);
+  canvas_fillLineHorizontal(canvas, '-', 2);
+  canvas_fillLineVertical(canvas, '|', 2);
 }
 
 void renderSudokuField(Canvas* canvas){
@@ -69,10 +70,10 @@ void renderTopHeader(Canvas* canvas, int gapSize){
   int maxWidth = canvas->dimension.width;
 
   for(iterator = gapSize; iterator < maxWidth; iterator+=gapSize+1){
-    fillPoint(canvas, 'A'+ counter++, iterator, 0);
+    canvas_fillPoint(canvas, 'A'+ counter++, iterator, 0);
   }
 
-  fillArrayHorizontalLine(canvas, '-', 1);
+  canvas_fillLineHorizontal(canvas, '-', 1);
 
 }
 void renderLeftHeader(Canvas* canvas, int gapSize){
@@ -81,11 +82,11 @@ void renderLeftHeader(Canvas* canvas, int gapSize){
   int maxHeight = canvas->dimension.height;
 
   for(iterator = gapSize+1; iterator < maxHeight; iterator+=gapSize+1){
-      fillPoint(canvas, counter++ + '0', 0, iterator);
+      canvas_fillPoint(canvas, counter++ + '0', 0, iterator);
     }
 
-  fillArrayVerticalLine(canvas, '|', 1);
-  fillPoint(canvas, '+', 1, 1);
+  canvas_fillLineVertical(canvas, '|', 1);
+  canvas_fillPoint(canvas, '+', 1, 1);
 }
 
 void renderHorizontalBars(Canvas* canvas){
@@ -93,7 +94,7 @@ void renderHorizontalBars(Canvas* canvas){
   int maxWidth = canvas->dimension.width;
 
   for(iterator = 3; iterator < maxWidth; iterator+=2){
-    fillArrayHorizontalLine(canvas, '-', iterator );
+    canvas_fillLineHorizontal(canvas, '-', iterator );
   }
 }
 
@@ -102,7 +103,7 @@ void renderVerticalBars(Canvas* canvas){
   int maxWidth = canvas->dimension.width;
 
   for(iterator = 5; iterator < maxWidth; iterator+=4){
-    fillArrayVerticalLine(canvas, '|', iterator );
+    canvas_fillLineVertical(canvas, '|', iterator );
   }
 }
 
@@ -112,11 +113,11 @@ void renderCrosses(Canvas* canvas){
   int y;
   int x;
 
-  /* fillPoint(canvas,'+', 5,1); */
+  /* canvas_fillPoint(canvas,'+', 5,1); */
 
   for(y = 1; y < maxHeight; y+=2){
     for(x = 1; x < maxWidth; x+=4){
-      fillPoint(canvas, '+', x, y);
+      canvas_fillPoint(canvas, '+', x, y);
     }
   }
 }

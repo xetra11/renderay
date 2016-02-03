@@ -36,13 +36,13 @@ typedef struct{
 }Canvas;
 
 /* API */
-Canvas* createNewCanvas(int height, int width);
-void customFillArrayHorizontalLine(Canvas* canvas, char fillSymbol,int offset, int row, int count);
-void customfillArrayVerticalLine(Canvas* canvas, char fillSymbol, int offset, int column, int count);
-void fillArrayHorizontalLine(Canvas* canvas, char fillSymbol, int row);
-void fillArrayVerticalLine(Canvas* canvas, char fillSymbol, int column);
-void fillPoint(Canvas* canvas, char fillSymbol, int x, int y);
-void initializeArray(Canvas* canvas, char fillSymbol);
+Canvas* new_Canvas(int height, int width);
+void canvas_fillLineHorizontalCustom(Canvas* canvas, char fillSymbol,int offset, int row, int count);
+void canvas_fillLineVerticalCustom(Canvas* canvas, char fillSymbol, int offset, int column, int count);
+void canvas_fillLineHorizontal(Canvas* canvas, char fillSymbol, int row);
+void canvas_fillLineVertical(Canvas* canvas, char fillSymbol, int column);
+void canvas_fillPoint(Canvas* canvas, char fillSymbol, int x, int y);
+void canvas_fill(Canvas* canvas, char fillSymbol);
 
 
 #endif
