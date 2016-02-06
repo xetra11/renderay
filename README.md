@@ -70,11 +70,11 @@ The core API provides the basic functionality to render onto a canvas. You can d
 ```C
 Canvas* new_Canvas(int height, int width)
 ```
-######Parameters:
-*height* - set the height of the canvas  
-*width* - set the width of the canvas  
-######Returns:
-*Canvas** - the canvas "object" you can use to render onto  
+>######Parameters:
+>*height* - set the height of the canvas  
+>*width* - set the width of the canvas  
+>######Returns:
+>*Canvas** - the canvas "object" you can use to render onto  
 
 ```C
 void canvas_fillLineHorizontalCustom(Canvas* canvas, char fillSymbol, int offset, int row, int count)
