@@ -166,9 +166,9 @@ void shapes_rectangle(Canvas* canvas, int left, int top, int height, int width)
 >######Parameters:
 >*canvas* - the canvas this function should render onto  
 >*left* - the left point to start rendering  
->*top* - the top point to start rendering 
->*height* - the maximal height of the rectangle 
->*width* - the maximal width of the rectangle    
+>*top* - the top point to start rendering  
+>*height* - the maximal height of the rectangle  
+>*width* - the maximal width of the rectangle  
 >######Returns:
 >*void* - nothing 
 
