@@ -153,3 +153,24 @@ void canvas_fillPoint(Canvas* canvas, char fillSymbol, int x, int y)
 >######Returns:
 >*void* - nothing 
 
+####1. Shapes
+
+The shapes module provides some predefined solutions to render simple shapes like rectangles and circles. It therefore uses the functions of renderay-core so its depenend on that module.
+##### Functions:
+
+```C
+void shapes_rectangle(Canvas* canvas, int left, int top, int height, int width)
+```
+>######Description:
+>Renders a rectangle with given dimensions starting at the top and left position.
+>######Parameters:
+>*canvas* - the canvas this function should render onto  
+>*left* - the left point to start rendering  
+>*top* - the top point to start rendering 
+>*height* - the maximal height of the rectangle 
+>*width* - the maximal width of the rectangle    
+>######Returns:
+>*void* - nothing 
+
+
+
