@@ -7,7 +7,6 @@
   2. Shapes
 4. Future Plans
 
-
 ### 1. What is it?
 Well it's the best thing you might ever step over...if you have nothing better to do than filling two-dimensional arrays with ascii characters. I created it to ease the filling of friggin' 2D arrays for myself and well it's my first real library. So I try to make it as professional as possible in the range of making something that has been done a thousand times before. I still hope anybody might say "Oh yeee jeez thats exactly what I was looking for".
 
@@ -70,6 +69,8 @@ The core API provides the basic functionality to render onto a canvas. You can d
 ```C
 Canvas* new_Canvas(int height, int width)
 ```
+>######Description:
+>First step function to get renderay to work. This will create a canvas to render onto. This canvas will be passed to every of the following functions.
 >######Parameters:
 >*height* - set the height of the canvas  
 >*width* - set the width of the canvas  
@@ -79,6 +80,8 @@ Canvas* new_Canvas(int height, int width)
 ```C
 void canvas_fill(Canvas* canvas, char fillSymbol)
 ```
+>######Description:
+>This function will fill the whole canvas with the given fill symbol. Good practice to measure the positions of rendered objects in a canvas is to give '.' as fill symbol. This will fill the whole canvas with dots where you can check if the object is in the wanted position i.e.
 >######Parameters:
 >*canvas* - the canvas this function should render onto  
 >*fillSymbol* - the ascii character that should be rendered  
@@ -135,8 +138,8 @@ void canvas_fillPoint(Canvas* canvas, char fillSymbol, int x, int y)
 >######Parameters:
 >*canvas* - the canvas this function should render onto  
 >*fillSymbol* - the ascii character that should be rendered  
->*x* - the x position of the point
->*y* - the y position of the point
+>*x* - the x position of the point  
+>*y* - the y position of the point  
 >######Returns:
 >*void* - nothing 
 
