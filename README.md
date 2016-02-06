@@ -1,6 +1,6 @@
 #Renderay
 
-Author: Patrick C. H.
+Author: Patrick C. H.  
 Stable Release: 1.1.2
 
 
