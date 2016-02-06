@@ -1,5 +1,9 @@
 #Renderay
 
+Author: Patrick C. H.
+Stable Release: 1.1.2
+
+
 1. What is it?
 2. How to use?
 3. Modules
