@@ -1,3 +1,4 @@
+<<<<<<< HEAD
                      _
                     | |
   _ __ ___ _ __   __| | ___ _ __ __ _ _   _
@@ -9,3 +10,7 @@
 
 
 
+=======
+# renderay
+simple library for C to provide an interface for two-dimensional arrays to draw stuff into
+>>>>>>> 0897e8ff056f74ff82ddb1b8c53deaa76be0a3af
