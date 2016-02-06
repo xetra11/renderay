@@ -13,7 +13,7 @@ Well it's the best thing you might ever step over...if you have nothing better t
 ### How to use?
 Before using this you should be at least familiar with the way to integrate libraries to your projects in C/C++. If you're capable of this kind of magic just download and include "renderay_core.h", "renderay_core.c", "renderay_shapes.h", "renderay_shapes.c" files to your project folder or wherever you wanna keep your libs.
 
-If you just want to draw horizontal or vertical lines and/or plain single symbols to the array then your only need **renderay_core**
+If you just want to draw horizontal or vertical lines and/or plain single symbols to the array then you only need **renderay_core**
 
 If you might want to already have rectangles being rendered out of the box, then you should include **renderay_shapes** as well.
 
@@ -29,10 +29,11 @@ If you might want to already have rectangles being rendered out of the box, then
 void printCanvas(Canvas* canvas);
 
 int main(void){
-  Canvas* canvas = new_Canvas(ARRAY_HEIGHT, ARRAY_WIDTH);
-  shapes_rectangle(canvas, 5, 5, 5, 5);
-  print(canvas);
+  Canvas* canvas = new_Canvas(ARRAY_HEIGHT, ARRAY_WIDTH); // create a canvas to render to
+  shapes_rectangle(canvas, 5, 5, 5, 5); // render a shape to the canvas (see Submodules/Shapes for the API)
+  print(canvas); // print the canvas (not a build in function!)
   
+  return 0;
 }
 
 void printCanvas(Canvas* canvas){
