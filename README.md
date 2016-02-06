@@ -80,13 +80,13 @@ Canvas* new_Canvas(int height, int width)
 void canvas_fillLineHorizontalCustom(Canvas* canvas, char fillSymbol, int offset, int row, int count)
 ```
 >######Parameters:
->*canvas* - the canvas this function should render onto
->*fillSymbol* - the ascii character that should be rendered
->*offset* - the offset position (horizontal) the rendering should start at
->*row* - the row the rendering should start at
->*count* - the amount of characters that should be rendered
+>*canvas* - the canvas this function should render onto  
+>*fillSymbol* - the ascii character that should be rendered  
+>*offset* - the offset position (horizontal) the rendering should start at 
+>*row* - the row the rendering should start at  
+>*count* - the amount of characters that should be rendered  
 >######Returns:
->*void* - nothing
+>*void* - nothing  
 
 
 
