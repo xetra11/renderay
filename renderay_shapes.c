@@ -24,7 +24,7 @@
  --------------------------------------------------------------------------------
                                        API
  --------------------------------------------------------------------------------
- shapes_rectangle(Canvas* canvas, int left, int top, int height, int width)
+ void shapes_rectangle(Canvas* canvas, int left, int top, int height, int width)
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  Please read the DOC.md to get the whole documentation for renderay
 ================================================================================>
