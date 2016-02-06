@@ -77,6 +77,15 @@ Canvas* new_Canvas(int height, int width)
 >*Canvas** - the canvas "object" you can use to render onto  
 
 ```C
+void canvas_fill(Canvas* canvas, char fillSymbol)
+```
+>######Parameters:
+>*canvas* - the canvas this function should render onto  
+>*fillSymbol* - the ascii character that should be rendered  
+>######Returns:
+>*void* - nothing 
+
+```C
 void canvas_fillLineHorizontalCustom(Canvas* canvas, char fillSymbol, int offset, int row, int count)
 ```
 >######Parameters:
@@ -111,10 +120,23 @@ void canvas_fillLineHorizontal(Canvas* canvas, char fillSymbol, int row)
 >*void* - nothing  
 
 ```C
-
-
-
 void canvas_fillLineVertical(Canvas* canvas, char fillSymbol, int column)
-void canvas_fillPoint(Canvas* canvas, char fillSymbol, int x, int y)
-void canvas_fill(Canvas* canvas, char fillSymbol)
 ```
+>######Parameters:
+>*canvas* - the canvas this function should render onto  
+>*fillSymbol* - the ascii character that should be rendered  
+>*column* - the column the line should be rendered in  
+>######Returns:
+>*void* - nothing 
+
+```C
+void canvas_fillPoint(Canvas* canvas, char fillSymbol, int x, int y)
+```
+>######Parameters:
+>*canvas* - the canvas this function should render onto  
+>*fillSymbol* - the ascii character that should be rendered  
+>*x* - the x position of the point
+>*y* - the y position of the point
+>######Returns:
+>*void* - nothing 
+
