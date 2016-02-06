@@ -91,6 +91,8 @@ void canvas_fill(Canvas* canvas, char fillSymbol)
 ```C
 void canvas_fillLineHorizontalCustom(Canvas* canvas, char fillSymbol, int offset, int row, int count)
 ```
+>######Description:
+>Renders a horizontal line onto the canves starting at the given offset and row. The count you provide will determine the maximal length of the line.
 >######Parameters:
 >*canvas* - the canvas this function should render onto  
 >*fillSymbol* - the ascii character that should be rendered  
@@ -103,6 +105,8 @@ void canvas_fillLineHorizontalCustom(Canvas* canvas, char fillSymbol, int offset
 ```C
 void canvas_fillLineVerticalCustom(Canvas* canvas, char fillSymbol, int offset, int column, int count)
 ```
+>######Description:
+>Renders a vertical line onto the canves starting at the given offset and column. The count you provide will determine the maximal length of the line.
 >######Parameters:
 >*canvas* - the canvas this function should render onto  
 >*fillSymbol* - the ascii character that should be rendered  
@@ -115,6 +119,8 @@ void canvas_fillLineVerticalCustom(Canvas* canvas, char fillSymbol, int offset, 
 ```C
 void canvas_fillLineHorizontal(Canvas* canvas, char fillSymbol, int row)
 ```
+>######Description:
+>Renders a horizontal line from the most left to the most right of the canvas width. You only need to provide the row where the rendering should start at.
 >######Parameters:
 >*canvas* - the canvas this function should render onto  
 >*fillSymbol* - the ascii character that should be rendered  
@@ -125,6 +131,8 @@ void canvas_fillLineHorizontal(Canvas* canvas, char fillSymbol, int row)
 ```C
 void canvas_fillLineVertical(Canvas* canvas, char fillSymbol, int column)
 ```
+>######Description:
+>Renders a vertical line from the top to the bottom of the canvas. You only need to provide the column where the rendering should start at.
 >######Parameters:
 >*canvas* - the canvas this function should render onto  
 >*fillSymbol* - the ascii character that should be rendered  
@@ -135,6 +143,8 @@ void canvas_fillLineVertical(Canvas* canvas, char fillSymbol, int column)
 ```C
 void canvas_fillPoint(Canvas* canvas, char fillSymbol, int x, int y)
 ```
+>######Description:
+>Renders the given fill symbol to a specific positon(x,y) onto the canvas.
 >######Parameters:
 >*canvas* - the canvas this function should render onto  
 >*fillSymbol* - the ascii character that should be rendered  
