@@ -88,12 +88,32 @@ void canvas_fillLineHorizontalCustom(Canvas* canvas, char fillSymbol, int offset
 >######Returns:
 >*void* - nothing  
 
+```C
+void canvas_fillLineVerticalCustom(Canvas* canvas, char fillSymbol, int offset, int column, int count)
+```
+>######Parameters:
+>*canvas* - the canvas this function should render onto  
+>*fillSymbol* - the ascii character that should be rendered  
+>*offset* - the offset position (vertical) the rendering should start at 
+>*column* - the column the rendering should start at  
+>*count* - the amount of characters that should be rendered  
+>######Returns:
+>*void* - nothing  
 
+```C
+void canvas_fillLineHorizontal(Canvas* canvas, char fillSymbol, int row)
+```
+>######Parameters:
+>*canvas* - the canvas this function should render onto  
+>*fillSymbol* - the ascii character that should be rendered  
+>*row* - the row the line should be rendered in  
+>######Returns:
+>*void* - nothing  
 
 ```C
 
-void canvas_fillLineVerticalCustom(Canvas* canvas, char fillSymbol, int offset, int column, int count)
-void canvas_fillLineHorizontal(Canvas* canvas, char fillSymbol, int row)
+
+
 void canvas_fillLineVertical(Canvas* canvas, char fillSymbol, int column)
 void canvas_fillPoint(Canvas* canvas, char fillSymbol, int x, int y)
 void canvas_fill(Canvas* canvas, char fillSymbol)
