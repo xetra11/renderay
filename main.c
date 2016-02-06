@@ -10,7 +10,7 @@
 
 /*Prototypen*/
 //Helper
-void printArray(Canvas* canvas, ArrayDimension dimension);
+void printArray(Canvas* canvas);
 //Examples
 void renderSmiley(Canvas* canvas);
 void renderCross(Canvas* canvas);
@@ -28,18 +28,18 @@ int main(void){
 
   /* canvas_fill(canvas, '.');  */
 
-  shapes_rectangle(canvas, 0, 0, 10, 20);
-  shapes_rectangle(canvas, 1, 1, 8, 18);
-  shapes_rectangle(canvas, 2, 2, 6, 16);
-  shapes_rectangle(canvas, 3, 3, 5, 14);
-  shapes_rectangle(canvas, 4, 4, 3, 5);
-  shapes_rectangle(canvas, 11, 4, 3, 5);
+  shapes_rectangle(canvas, 0, 0, 5, 5);
+  /* shapes_rectangle(canvas, 1, 1, 8, 18); */
+  /* shapes_rectangle(canvas, 2, 2, 6, 16); */
+  /* shapes_rectangle(canvas, 3, 3, 5, 14); */
+  /* shapes_rectangle(canvas, 4, 4, 3, 5); */
+  /* shapes_rectangle(canvas, 11, 4, 3, 5);  */
 
   /* renderSmiley(canvas); */
   /* renderCross(canvas); */
   /* renderSudokuField(canvas); */
   /* canvas_fillPoint(canvas, '9', 3,2); */
-  printArray(canvas, canvas->dimension);
+  printArray(canvas);
 
   return 0;
 }
@@ -132,14 +132,16 @@ void renderCrosses(Canvas* canvas){
   }
 }
 
-void printArray(Canvas* canvas, ArrayDimension dimension){
-  int iterator_Y;
-  int iterator_X;
+void printArray(Canvas* canvas){
+  int iteratorY;
+  int iteratorX;
+  int maxHeight = canvas->dimension.height;
+  int maxWidth = canvas->dimension.width;
   char* arrayToPrint = canvas->array;
 
-  for(iterator_Y = 0; iterator_Y < dimension.height; iterator_Y++){
-    for(iterator_X = 0; iterator_X < dimension.width; iterator_X++){
-      printf("%c", arrayToPrint[iterator_Y* dimension.width + iterator_X]);
+  for(iteratorY = 0; iteratorY < maxHeight; iteratorY++){
+    for(iteratorX = 0; iteratorX < maxWidth; iteratorX++){
+      printf("%c", arrayToPrint[iteratorY* maxWidth + iteratorX]);
     }
     printf("\n");
   }
