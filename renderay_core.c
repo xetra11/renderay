@@ -1,24 +1,39 @@
 /*
-author: Patrick Hoefer
-name: renderay-core (render & array)
-description: Renderay tries to simplify the rendering of arrays.
-             Therefore the API provides the user with static and
-             customizable functions to draw characters into a
-             character array.
-documentation: How to:
-               To start rendering an array and printing it to the screen th               e user has to create a "Canvas" type/object first. A Canvas
-               holds the dimension and the pointer to the corresponding
-               array to easy the use of functions due slim parameterlist
-               and to capsule canvas-specific state like the width and the
-               height.
-               After creating an canvas the user can pass it to the render-
-               ing functions and let the canvas be filled with specified
-               characters at the customized positions. The usecase of
-               this library is to create custom functions to draw with the
-               help of the rendering functions provided by Renderay.
-version: 1.0
-date: 29.01.2016
-dependencies: -
+==========================================================================================================>
+                     _
+                    | |
+  _ __ ___ _ __   __| | ___ _ __ __ _ _   _
+ | '__/ _ | '_ \ / _` |/ _ | '__/ _` | | | |
+ | | |  __| | | | (_| |  __| | | (_| | |_| |
+ |_|  \___|_| |_|\__,_|\___|_|  \__,_|\__, |
+                                       __/ |
+                                      |___/
+
+             +++ Core +++
+
+
+ Author: Patrick C. Hoefer (xetra11)
+ Version: 1.0
+ Date: 06.02.2016
+ ----------------------------------------------------------------------------------------------------------
+                                                Description
+ ----------------------------------------------------------------------------------------------------------
+ The core library for renderay holds everything you need to render in a simple
+ way within an array. To provide an array to which renderay can render into you
+ have to create a Canvas type and pass it to the render functions
+ ----------------------------------------------------------------------------------------------------------
+                                                    API
+ ----------------------------------------------------------------------------------------------------------
+ Canvas* new_Canvas(int height, int width)
+ void canvas_fillLineHorizontalCustom(Canvas* canvas, char fillSymbol,int offset, int row, int count);
+ void canvas_fillLineVerticalCustom(Canvas* canvas, char fillSymbol, int offset, int column, int count);
+ void canvas_fillLineHorizontal(Canvas* canvas, char fillSymbol, int row);
+ void canvas_fillLineVertical(Canvas* canvas, char fillSymbol, int column);
+ void canvas_fillPoint(Canvas* canvas, char fillSymbol, int x, int y);
+ void canvas_fill(Canvas* canvas, char fillSymbol);
+ - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ Please read the DOC.md to get the whole documentation for renderay
+ =========================================================================================================>
 */
 
 #include <stdarg.h>
