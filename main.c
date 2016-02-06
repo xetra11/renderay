@@ -1,9 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "renderay.h"
+#include <stdarg.h>
+#include "renderay_core.h"
+#include "renderay_shapes.h"
 
-#define ARRAY_HEIGHT 30
-#define ARRAY_WIDTH 50
+#define ARRAY_HEIGHT 20
+#define ARRAY_WIDTH 40
+
 
 /*Prototypen*/
 //Helper
@@ -23,9 +26,16 @@ int main(void){
 
   Canvas* canvas = new_Canvas(ARRAY_HEIGHT, ARRAY_WIDTH);
 
-  /* canvas_fill(canvas, '.'); */
+  /* canvas_fill(canvas, '.');  */
 
-  renderSmiley(canvas);
+  shapes_rectangle(canvas, 0, 0, 10, 20);
+  shapes_rectangle(canvas, 1, 1, 8, 18);
+  shapes_rectangle(canvas, 2, 2, 6, 16);
+  shapes_rectangle(canvas, 3, 3, 5, 14);
+  shapes_rectangle(canvas, 4, 4, 3, 5);
+  shapes_rectangle(canvas, 11, 4, 3, 5);
+
+  /* renderSmiley(canvas); */
   /* renderCross(canvas); */
   /* renderSudokuField(canvas); */
   /* canvas_fillPoint(canvas, '9', 3,2); */
