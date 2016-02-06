@@ -1,7 +1,7 @@
 #Renderay
 
-Author: Patrick C. H.  
-Stable Release: 1.1.2
+*Author: Patrick C. H.*  
+*Stable Release: 1.1.2*
 
 
 1. What is it?
