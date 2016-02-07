@@ -12,7 +12,7 @@
              +++ Core +++
 
 
- Author: Patrick C. Hoefer (xetra11)
+ Author: Patrick C. Hoefer (xetra1)1
  Version: 1.0
  Date: 06.02.2016
  ----------------------------------------------------------------------------------------------------------
@@ -30,6 +30,7 @@
  void canvas_fillLineHorizontal(Canvas* canvas, char fillSymbol, int row);
  void canvas_fillLineVertical(Canvas* canvas, char fillSymbol, int column);
  void canvas_fillPoint(Canvas* canvas, char fillSymbol, int x, int y);
+ void canvas_fillLine(Canvas* canvas, char fillSymbol, int startX, int startY, int endX, int endY);
  void canvas_fill(Canvas* canvas, char fillSymbol);
  - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  Please read the DOC.md to get the whole documentation for renderay
