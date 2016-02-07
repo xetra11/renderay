@@ -12,8 +12,13 @@
              +++ Core +++
 
 
+<<<<<<< HEAD
  Author: Patrick C. Hoefer (xetra1)1
  Version: 1.0
+=======
+ Author: Patrick C. Hoefer (xetra11)
+ Version: 1.3.0
+>>>>>>> 609eb12d6b57247d19dd3c738234ae460710a0ca
  Date: 06.02.2016
  ----------------------------------------------------------------------------------------------------------
                                                 Description

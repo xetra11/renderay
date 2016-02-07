@@ -1,7 +1,7 @@
 #Renderay
 
 *Author: Patrick C. H.*  
-*Stable Release: 1.1.2*
+*Stable Release: 1.3.0*
 
 
 1. What is it?
@@ -141,6 +141,21 @@ void canvas_fillLineVertical(Canvas* canvas, char fillSymbol, int column)
 >*canvas* - the canvas this function should render onto  
 >*fillSymbol* - the ascii character that should be rendered  
 >*column* - the column the line should be rendered in  
+>######Returns:
+>*void* - nothing 
+
+```C
+void canvas_fillLine(Canvas* canvas, char fillSymbol, int startX, int startY, int endX, int endY)
+```
+>######Description:
+>Renders a line from the given start (startX, startY) to the destination (endX, endY)
+>######Parameters:
+>*canvas* - the canvas this function should render onto  
+>*fillSymbol* - the ascii character that should be rendered  
+>*startX* - the x position to start the line at  
+>*startY* - the y position to start the line at  
+>*endX* - the x position of the lines destination   
+>*endY* - the y position of the lines destination     
 >######Returns:
 >*void* - nothing 
 
