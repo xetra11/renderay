@@ -57,6 +57,7 @@ void canvas_fillLineHorizontal(Canvas* canvas, char fillSymbol, int row);
 void canvas_fillLineVertical(Canvas* canvas, char fillSymbol, int column);
 void canvas_fillPoint(Canvas* canvas, char fillSymbol, int x, int y);
 void canvas_fill(Canvas* canvas, char fillSymbol);
+void canvas_fillLine(Canvas* canvas, char fillSymbol, int xStart, int yStart, int xEnd, int yEnd);
 
 
 #endif

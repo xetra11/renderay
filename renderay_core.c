@@ -41,6 +41,8 @@
 #include <stdio.h>
 #include "renderay_core.h"
 
+int determineSign(int num);
+
 Canvas* new_Canvas(int height, int width){
   ArrayDimension dimension ;
   Canvas* newCanvas = malloc(sizeof(Canvas));
@@ -75,8 +77,97 @@ void canvas_fillPoint(Canvas* canvas, char fillSymbol, int x, int y){
   int maxWidth = canvas->dimension.width;
   int maxHeight = canvas->dimension.height;
 
+  // check for invalid input
+  if(x < 0 || y < 0){
+    printf("Invalid parameter for (canvas_fillPoint): must not be lesser than zero!");
+    return;
+  }
+
+  if(x > maxWidth || y > maxHeight){
+    printf("Invalid parameter for (canvas_fillPoint): higher than canvas boundaries!");
+    return;
+  }
+
   if(x <= maxWidth && y <= maxHeight){
     arrayToFill[x+(y*maxWidth)] = fillSymbol;
+  }
+}
+
+void canvas_fillLine(Canvas* canvas, char fillSymbol, int xStart, int yStart, int xEnd, int yEnd){
+  int iterator;
+  //paralell steps
+  int paraX;
+  int paraY;
+  //diagonal steps
+  int diagX;
+  int diagY;
+  //default coords
+  int x_start  = xStart;
+  int x_end    = xEnd;
+  int y_start  = yStart;
+  int y_end    = yEnd;
+  int x        = x_start;
+  int y        = y_start;
+
+  // check for invalid input
+  if(xStart < 0 || yStart < 0 || xEnd < 0 || yEnd < 0){
+    printf("Invalid parameter for (canvas_fillLine): must not be lesser than zero!");
+    return;
+  }
+
+  // calclate deltas
+  int dx       = x_end - x_start;
+  int dy       = y_end - y_start;
+
+  // set sign
+  int signOfX  = determineSign(dx);
+  int signOfY  = determineSign(dy);
+  if(dx < 0) dx = -dx;
+  if(dy < 0) dy = -dy;
+
+  int fastError;
+  int slowError;
+  int error;
+
+  /* which direction has the faster draw frequency */
+  if(dx>dy){
+    /* x is the faster one */
+    paraX = signOfX; // will step +1 or -1 or 0
+    paraY = 0;       // will only diagonally cause slower
+    diagX = signOfX;
+    diagY = signOfY; // now y will step also
+    fastError = dy;
+    slowError = dx;
+  }else{
+    /* y is the faster one */
+    paraX = 0;
+    paraY = signOfY;
+    diagX = signOfX;
+    diagY = signOfY;
+    fastError = dx;
+    slowError = dy;
+  }
+
+  //init loop
+  error = slowError/2;
+  canvas_fillPoint(canvas, fillSymbol, x, y);
+
+  /* count renders */
+  for(iterator = 0; iterator < slowError; ++iterator){
+    //update error
+    error -= fastError;
+    if(error < 0){
+      /* make error pos again */
+      error += slowError;
+      /* one step to slower direction */
+      x += diagX;
+      y += diagY;
+    }else{
+      /* one step in fast direction */
+      x += paraX;
+      y += paraY;
+    }
+    canvas_fillPoint(canvas, fillSymbol, x, y);
   }
 }
 
@@ -135,4 +226,11 @@ void canvas_fillLineVertical(Canvas* canvas, char fillSymbol, int column){
     posToDrawAt = (iterator) * arrayWidth;
     arrayToFill[posToDrawAt+columnToStartDrawing] = fillSymbol;
   }
+}
+
+
+/* Helper */
+
+int determineSign(int num){
+  return (num > 0) ? 1 : (num < 0) ? -1 : 0;
 }
