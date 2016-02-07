@@ -1,7 +1,7 @@
 #Renderay
 
 *Author: Patrick C. H.*  
-*Stable Release: 1.3.1*
+*Stable Release: 1.4.0*
 
 
 1. What is it?
@@ -188,6 +188,19 @@ void shapes_renderRectangle(Canvas* canvas, int left, int top, int height, int w
 >*top* - the top point to start rendering  
 >*height* - the maximal height of the rectangle  
 >*width* - the maximal width of the rectangle  
+>######Returns:
+>*void* - nothing 
+
+```C
+void shapes_renderCircle(Canvas* canvas, int x, int y, int radius)
+```
+>######Description:
+>Renders a circle with the mid point (x, y) and its radius. Still looks weird because of the width to height relation of the console.
+>######Parameters:
+>*canvas* - the canvas this function should render onto  
+>*x* - the x position of the middle point
+>*y* - the y position of the middle point
+>*radius* - the radius to draw to  
 >######Returns:
 >*void* - nothing 
 
