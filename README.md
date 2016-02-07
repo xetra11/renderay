@@ -198,8 +198,8 @@ void shapes_renderCircle(Canvas* canvas, int x, int y, int radius)
 >Renders a circle with the mid point (x, y) and its radius. Still looks weird because of the width to height relation of the console.
 >######Parameters:
 >*canvas* - the canvas this function should render onto  
->*x* - the x position of the middle point
->*y* - the y position of the middle point
+>*x* - the x position of the middle point  
+>*y* - the y position of the middle point  
 >*radius* - the radius to draw to  
 >######Returns:
 >*void* - nothing 
