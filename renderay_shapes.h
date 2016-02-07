@@ -36,5 +36,6 @@
 #include "renderay_core.h"
 
 void shapes_rectangle(Canvas* canvas, int x, int y, int height, int width);
+void shapes_circle(Canvas* canvas, int x, int y, int radius);
 
 #endif
