@@ -1,5 +1,9 @@
 #Renderay
 
+*Author: Patrick C. H.*  
+*Stable Release: 1.1.2*
+
+
 1. What is it?
 2. How to use?
 3. Modules
@@ -30,7 +34,7 @@ void printCanvas(Canvas* canvas);
 
 int main(void){
   Canvas* canvas = new_Canvas(ARRAY_HEIGHT, ARRAY_WIDTH); // create a canvas to render to
-  shapes_rectangle(canvas, 5, 5, 5, 5); // render a shape to the canvas (see Submodules/Shapes for the API)
+  shapes_rectangle(canvas, 0, 0, 5, 5); // render a shape to the canvas (see Submodules/Shapes for the API)
   print(canvas); // print the canvas (not a build in function!)
   
   return 0;
@@ -152,4 +156,25 @@ void canvas_fillPoint(Canvas* canvas, char fillSymbol, int x, int y)
 >*y* - the y position of the point  
 >######Returns:
 >*void* - nothing 
+
+####1. Shapes
+
+The shapes module provides some predefined solutions to render simple shapes like rectangles and circles. It therefore uses the functions of renderay-core so its depenend on that module.
+##### Functions:
+
+```C
+void shapes_rectangle(Canvas* canvas, int left, int top, int height, int width)
+```
+>######Description:
+>Renders a rectangle with given dimensions starting at the top and left position.
+>######Parameters:
+>*canvas* - the canvas this function should render onto  
+>*left* - the left point to start rendering  
+>*top* - the top point to start rendering  
+>*height* - the maximal height of the rectangle  
+>*width* - the maximal width of the rectangle  
+>######Returns:
+>*void* - nothing 
+
+
 
