@@ -24,7 +24,7 @@
  --------------------------------------------------------------------------------
                                        API
  --------------------------------------------------------------------------------
- void shapes_rectangle(Canvas* canvas, int left, int top, int height, int width)
+ void shapes_renderRectangle(Canvas* canvas, int left, int top, int height, int width)
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  Please read the DOC.md to get the whole documentation for renderay
 ================================================================================>
@@ -40,7 +40,7 @@ void renderRectangleBottom(Canvas* canvas, int left, int top, int height, int wi
 void renderRectangleLeft(Canvas* canvas, int left, int top, int height);
 void renderRectangleRight(Canvas* canvas, int left, int top, int height, int width);
 
-void shapes_rectangle(Canvas* canvas, int left, int top, int height, int width){
+void shapes_renderRectangle(Canvas* canvas, int left, int top, int height, int width){
   char* array = canvas->array;
   int maxWidth = canvas->dimension.width;
   int maxHeight = canvas->dimension.height;

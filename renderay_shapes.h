@@ -24,7 +24,7 @@
  --------------------------------------------------------------------------------
                                        API
  --------------------------------------------------------------------------------
- void shapes_rectangle(Canvas* canvas, int left, int top, int height, int width)
+ void shapes_renderRectangle(Canvas* canvas, int left, int top, int height, int width)
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  Please read the DOC.md to get the whole documentation for renderay
 ================================================================================>
@@ -35,7 +35,7 @@
 
 #include "renderay_core.h"
 
-void shapes_rectangle(Canvas* canvas, int x, int y, int height, int width);
-void shapes_circle(Canvas* canvas, int x, int y, int radius);
+void shapes_renderRectangle(Canvas* canvas, int x, int y, int height, int width);
+// void shapes_renderCircle(Canvas* canvas, int x, int y, int radius);
 
 #endif
