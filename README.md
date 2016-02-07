@@ -1,7 +1,7 @@
 #Renderay
 
 *Author: Patrick C. H.*  
-*Stable Release: 1.3.0*
+*Stable Release: 1.3.1*
 
 
 1. What is it?
@@ -34,7 +34,7 @@ void printCanvas(Canvas* canvas);
 
 int main(void){
   Canvas* canvas = new_Canvas(ARRAY_HEIGHT, ARRAY_WIDTH); // create a canvas to render to
-  shapes_rectangle(canvas, 0, 0, 5, 5); // render a shape to the canvas (see Submodules/Shapes for the API)
+  shapes_renderRectangle(canvas, 0, 0, 5, 5); // render a shape to the canvas (see Submodules/Shapes for the API)
   print(canvas); // print the canvas (not a build in function!)
   
   return 0;
@@ -93,7 +93,7 @@ void canvas_fill(Canvas* canvas, char fillSymbol)
 >*void* - nothing 
 
 ```C
-void canvas_fillLineHorizontalCustom(Canvas* canvas, char fillSymbol, int offset, int row, int count)
+void canvas_renderLineHorizontalCustom(Canvas* canvas, char fillSymbol, int offset, int row, int count)
 ```
 >######Description:
 >Renders a horizontal line onto the canves starting at the given offset and row. The count you provide will determine the maximal length of the line.
@@ -107,7 +107,7 @@ void canvas_fillLineHorizontalCustom(Canvas* canvas, char fillSymbol, int offset
 >*void* - nothing  
 
 ```C
-void canvas_fillLineVerticalCustom(Canvas* canvas, char fillSymbol, int offset, int column, int count)
+void canvas_renderLineVerticalCustom(Canvas* canvas, char fillSymbol, int offset, int column, int count)
 ```
 >######Description:
 >Renders a vertical line onto the canves starting at the given offset and column. The count you provide will determine the maximal length of the line.
@@ -121,7 +121,7 @@ void canvas_fillLineVerticalCustom(Canvas* canvas, char fillSymbol, int offset, 
 >*void* - nothing  
 
 ```C
-void canvas_fillLineHorizontal(Canvas* canvas, char fillSymbol, int row)
+void canvas_renderLineHorizontal(Canvas* canvas, char fillSymbol, int row)
 ```
 >######Description:
 >Renders a horizontal line from the most left to the most right of the canvas width. You only need to provide the row where the rendering should start at.
@@ -133,7 +133,7 @@ void canvas_fillLineHorizontal(Canvas* canvas, char fillSymbol, int row)
 >*void* - nothing  
 
 ```C
-void canvas_fillLineVertical(Canvas* canvas, char fillSymbol, int column)
+void canvas_renderLineVertical(Canvas* canvas, char fillSymbol, int column)
 ```
 >######Description:
 >Renders a vertical line from the top to the bottom of the canvas. You only need to provide the column where the rendering should start at.
@@ -145,7 +145,7 @@ void canvas_fillLineVertical(Canvas* canvas, char fillSymbol, int column)
 >*void* - nothing 
 
 ```C
-void canvas_fillLine(Canvas* canvas, char fillSymbol, int startX, int startY, int endX, int endY)
+void canvas_renderLine(Canvas* canvas, char fillSymbol, int startX, int startY, int endX, int endY)
 ```
 >######Description:
 >Renders a line from the given start (startX, startY) to the destination (endX, endY)
@@ -160,7 +160,7 @@ void canvas_fillLine(Canvas* canvas, char fillSymbol, int startX, int startY, in
 >*void* - nothing 
 
 ```C
-void canvas_fillPoint(Canvas* canvas, char fillSymbol, int x, int y)
+void canvas_renderPoint(Canvas* canvas, char fillSymbol, int x, int y)
 ```
 >######Description:
 >Renders the given fill symbol to a specific positon(x,y) onto the canvas.
@@ -178,7 +178,7 @@ The shapes module provides some predefined solutions to render simple shapes lik
 ##### Functions:
 
 ```C
-void shapes_rectangle(Canvas* canvas, int left, int top, int height, int width)
+void shapes_renderRectangle(Canvas* canvas, int left, int top, int height, int width)
 ```
 >######Description:
 >Renders a rectangle with given dimensions starting at the top and left position.
