@@ -12,13 +12,8 @@
              +++ Core +++
 
 
-<<<<<<< HEAD
- Author: Patrick C. Hoefer (xetra1)1
- Version: 1.0
-=======
  Author: Patrick C. Hoefer (xetra11)
- Version: 1.3.0
->>>>>>> 609eb12d6b57247d19dd3c738234ae460710a0ca
+ Version: 1.3.1
  Date: 06.02.2016
  ----------------------------------------------------------------------------------------------------------
                                                 Description
@@ -30,12 +25,12 @@
                                                     API
  ----------------------------------------------------------------------------------------------------------
  Canvas* new_Canvas(int height, int width)
- void canvas_fillLineHorizontalCustom(Canvas* canvas, char fillSymbol,int offset, int row, int count);
- void canvas_fillLineVerticalCustom(Canvas* canvas, char fillSymbol, int offset, int column, int count);
- void canvas_fillLineHorizontal(Canvas* canvas, char fillSymbol, int row);
- void canvas_fillLineVertical(Canvas* canvas, char fillSymbol, int column);
- void canvas_fillPoint(Canvas* canvas, char fillSymbol, int x, int y);
- void canvas_fillLine(Canvas* canvas, char fillSymbol, int startX, int startY, int endX, int endY);
+ void canvas_renderLineHorizontalCustom(Canvas* canvas, char fillSymbol,int offset, int row, int count);
+ void canvas_renderLineVerticalCustom(Canvas* canvas, char fillSymbol, int offset, int column, int count);
+ void canvas_renderLineHorizontal(Canvas* canvas, char fillSymbol, int row);
+ void canvas_renderLineVertical(Canvas* canvas, char fillSymbol, int column);
+ void canvas_renderPoint(Canvas* canvas, char fillSymbol, int x, int y);
+ void canvas_renderLine(Canvas* canvas, char fillSymbol, int startX, int startY, int endX, int endY);
  void canvas_fill(Canvas* canvas, char fillSymbol);
  - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  Please read the DOC.md to get the whole documentation for renderay
@@ -57,13 +52,13 @@ typedef struct{
 
 /* API */
 Canvas* new_Canvas(int height, int width);
-void canvas_fillLineHorizontalCustom(Canvas* canvas, char fillSymbol,int offset, int row, int count);
-void canvas_fillLineVerticalCustom(Canvas* canvas, char fillSymbol, int offset, int column, int count);
-void canvas_fillLineHorizontal(Canvas* canvas, char fillSymbol, int row);
-void canvas_fillLineVertical(Canvas* canvas, char fillSymbol, int column);
-void canvas_fillPoint(Canvas* canvas, char fillSymbol, int x, int y);
+void canvas_renderLineHorizontalCustom(Canvas* canvas, char fillSymbol,int offset, int row, int count);
+void canvas_renderLineVerticalCustom(Canvas* canvas, char fillSymbol, int offset, int column, int count);
+void canvas_renderLineHorizontal(Canvas* canvas, char fillSymbol, int row);
+void canvas_renderLineVertical(Canvas* canvas, char fillSymbol, int column);
+void canvas_renderPoint(Canvas* canvas, char fillSymbol, int x, int y);
 void canvas_fill(Canvas* canvas, char fillSymbol);
-void canvas_fillLine(Canvas* canvas, char fillSymbol, int xStart, int yStart, int xEnd, int yEnd);
+void canvas_renderLine(Canvas* canvas, char fillSymbol, int xStart, int yStart, int xEnd, int yEnd);
 
 
 #endif
