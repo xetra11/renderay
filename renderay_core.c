@@ -79,12 +79,12 @@ void canvas_fillPoint(Canvas* canvas, char fillSymbol, int x, int y){
 
   // check for invalid input
   if(x < 0 || y < 0){
-    printf("Invalid parameter for (canvas_fillPoint): must not be lesser than zero!");
+    printf("Invalid parameter for (canvas_fillPoint): must not be lesser than zero!\n");
     return;
   }
 
   if(x > maxWidth || y > maxHeight){
-    printf("Invalid parameter for (canvas_fillPoint): higher than canvas boundaries!");
+    printf("Invalid parameter for (canvas_fillPoint): higher than canvas boundaries!\n");
     return;
   }
 
@@ -111,7 +111,7 @@ void canvas_fillLine(Canvas* canvas, char fillSymbol, int xStart, int yStart, in
 
   // check for invalid input
   if(xStart < 0 || yStart < 0 || xEnd < 0 || yEnd < 0){
-    printf("Invalid parameter for (canvas_fillLine): must not be lesser than zero!");
+    printf("Invalid parameter for (canvas_fillLine): must not be lesser than zero!\n");
     return;
   }
 
