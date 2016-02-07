@@ -145,6 +145,21 @@ void canvas_fillLineVertical(Canvas* canvas, char fillSymbol, int column)
 >*void* - nothing 
 
 ```C
+void canvas_fillLine(Canvas* canvas, char fillSymbol, int startX, int startY, int endX, int endY)
+```
+>######Description:
+>Renders a line from the given start (startX, startY) to the destination (endX, endY)
+>######Parameters:
+>*canvas* - the canvas this function should render onto  
+>*fillSymbol* - the ascii character that should be rendered  
+>*startX* - the x position to start the line at  
+>*startY* - the y position to start the line at  
+>*endX* - the x position of the lines destination   
+>*endY* - the y position of the lines destination     
+>######Returns:
+>*void* - nothing 
+
+```C
 void canvas_fillPoint(Canvas* canvas, char fillSymbol, int x, int y)
 ```
 >######Description:
