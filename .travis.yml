@@ -1,2 +1,3 @@
 language: c
+compiler: gcc
 build: gcc -renderay_core.c -renderay_shapes.c
