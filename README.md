@@ -1,4 +1,4 @@
-#Renderay
+#Renderay [![Build Status](https://travis-ci.org/xetra11/renderay.svg?branch=master)](https://travis-ci.org/xetra11/renderay)
 
 *Author: Patrick C. H.*  
 *Stable Release: 1.4.0*
