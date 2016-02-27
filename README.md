@@ -35,7 +35,7 @@ void printCanvas(Canvas* canvas);
 int main(void){
   Canvas* canvas = new_Canvas(ARRAY_HEIGHT, ARRAY_WIDTH); // create a canvas to render to
   shapes_renderRectangle(canvas, 0, 0, 5, 5); // render a shape to the canvas (see Submodules/Shapes for the API)
-  print(canvas); // print the canvas (not a build in function!)
+  printCanvas(canvas); // print the canvas (not a build in function!)
   
   return 0;
 }
