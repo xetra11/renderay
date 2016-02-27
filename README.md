@@ -195,7 +195,7 @@ void shapes_renderRectangle(Canvas* canvas, int left, int top, int height, int w
 void shapes_renderRectangleDOS(Canvas* canvas, int left, int top, int height, int width)
 ```
 >######Description:
->Renders a rectangle with given dimensions starting at the top and left position. Uses DOS ASCII to draw lines.
+>Renders a rectangle with given dimensions starting at the top and left position. Uses DOS ASCII to draw lines.  
 **Warning** This will only work for Windows/DOS Consoles
 >######Parameters:
 >*canvas* - the canvas this function should render onto  
