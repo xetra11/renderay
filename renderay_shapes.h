@@ -13,8 +13,8 @@
 
 
  Author: Patrick C. Hoefer (xetra11)
- Version: 1.4.0
- Date: 07.02.2016
+ Version: 1.5.0
+ Date: 27.02.2016
  --------------------------------------------------------------------------------
                                    Description
  --------------------------------------------------------------------------------
@@ -25,6 +25,7 @@
                                        API
  --------------------------------------------------------------------------------
  void shapes_renderRectangle(Canvas* canvas, int left, int top, int height, int width)
+ void shapes_renderRectangleDOS(Canvas* canvas, int left, int top, int height, int width)
  void shapes_renderCircle(Canvas* canvas, int x, int y, int radius);
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  Please read the DOC.md to get the whole documentation for renderay
@@ -37,6 +38,7 @@
 #include "renderay_core.h"
 
 void shapes_renderRectangle(Canvas* canvas, int x, int y, int height, int width);
+void shapes_renderRectangleDOS(Canvas* canvas, int x, int y, int height, int width);
 void shapes_renderCircle(Canvas* canvas, int x, int y, int radius);
 
 #endif

@@ -13,8 +13,8 @@
 
 
  Author: Patrick C. Hoefer (xetra11)
- Version: 1.4.0
- Date: 07.02.2016
+ Version: 1.5.0
+ Date: 27.02.2016
  --------------------------------------------------------------------------------
                                    Description
  --------------------------------------------------------------------------------
@@ -25,6 +25,7 @@
                                        API
  --------------------------------------------------------------------------------
  void shapes_renderRectangle(Canvas* canvas, int left, int top, int height, int width)
+ void shapes_renderRectangleDOS(Canvas* canvas, int left, int top, int height, int width)
  void shapes_renderCircle(Canvas* canvas, int x, int y, int radius);
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  Please read the DOC.md to get the whole documentation for renderay
@@ -36,10 +37,11 @@
 #include "renderay_core.h"
 #include "renderay_shapes.h"
 
-void renderRectangleTop(Canvas* canvas, int left, int top, int width);
-void renderRectangleBottom(Canvas* canvas, int left, int top, int height, int width);
-void renderRectangleLeft(Canvas* canvas, int left, int top, int height);
-void renderRectangleRight(Canvas* canvas, int left, int top, int height, int width);
+void renderRectangleTop(Canvas* canvas, int left, int top, int width, char edgeSymbol, char hzSymbol);
+void renderRectangleBottom(Canvas* canvas, int left, int top, int height, int width, char edgeSymbol, char hzSymbol);
+void renderRectangleLeft(Canvas* canvas, int left, int top, int height, char edgeSymbol, char vtSymbol);
+void renderRectangleRight(Canvas* canvas, int left, int top, int height, int width, char edgeSymbol, char vtSymbol);
+void renderRectangle(Canvas* canvas, int left, int top, int height, int width, char edgeSymbol);
 
 void shapes_renderCircle(Canvas* canvas, int x_mid, int y_mid, int radius){
 
@@ -74,23 +76,36 @@ void shapes_renderCircle(Canvas* canvas, int x_mid, int y_mid, int radius){
   canvas_renderPoint(canvas, '+', x_mid - y, y_mid + x);
   canvas_renderPoint(canvas, '+', x_mid + y, y_mid - x);
   canvas_renderPoint(canvas, '+', x_mid - y, y_mid - x);
- 
+
 }
 
 void shapes_renderRectangle(Canvas* canvas, int left, int top, int height, int width){
-  char* array = canvas->array;
-  int maxWidth = canvas->dimension.width;
-  int maxHeight = canvas->dimension.height;
-  int iterator = 0;
-  int posToDrawAt = 0;
-
-  renderRectangleTop(canvas, left, top, width);
-  renderRectangleBottom(canvas, left, top, height, width);
-  renderRectangleLeft(canvas, left, top, height);
-  renderRectangleRight(canvas, left, top, height, width);
+  char edgeSymbol = '+';
+  renderRectangle(canvas, left, top, height, width, edgeSymbol);
 }
 
-void renderRectangleTop(Canvas* canvas, int left, int top, int width){
+void shapes_renderRectangleDOS(Canvas* canvas, int left, int top, int height, int width){
+
+  char hzSymbol = '\xB3';
+  char vtSymbol = '\xC4';
+
+  renderRectangleTop(canvas, left, top, width, '\xDA', hzSymbol );
+  renderRectangleBottom(canvas, left, top, height, width, '\xDA', hzSymbol);
+  renderRectangleLeft(canvas, left, top, height, '\xDA', vtSymbol);
+  renderRectangleRight(canvas, left, top, height, width, '\xDA', vtSymbol);
+}
+
+void renderRectangle(Canvas* canvas, int left, int top, int height, int width, char edgeSymbol){
+  char hzSymbol = '-';
+  char vtSymbol = '|';
+
+  renderRectangleTop(canvas, left, top, width, edgeSymbol, hzSymbol);
+  renderRectangleBottom(canvas, left, top, height, width, edgeSymbol, hzSymbol);
+  renderRectangleLeft(canvas, left, top, height, edgeSymbol, vtSymbol);
+  renderRectangleRight(canvas, left, top, height, width, edgeSymbol, vtSymbol);
+}
+
+void renderRectangleTop(Canvas* canvas, int left, int top, int width, char edgeSymbol, char lineSymbol){
   char* array = canvas->array;
   int maxWidth = canvas->dimension.width;
   int iterator = 0;
@@ -100,15 +115,15 @@ void renderRectangleTop(Canvas* canvas, int left, int top, int width){
 
   for(iterator = 0; iterator < width; iterator++ ){
     posToDrawAt = iterator + left + (top*maxWidth);
-    array[posToDrawAt] = '-';
+    array[posToDrawAt] = lineSymbol;
   }
 
-  array[edgeDrawBegin] = '+';
-  array[edgeDrawEnd] = '+';
+  array[edgeDrawBegin] = edgeSymbol;
+  array[edgeDrawEnd] = edgeSymbol;
 
 }
 
-void renderRectangleBottom(Canvas* canvas, int left, int top, int height, int width){
+void renderRectangleBottom(Canvas* canvas, int left, int top, int height, int width, char edgeSymbol, char lineSymbol){
   char* array = canvas->array;
   int maxWidth = canvas->dimension.width;
   int iterator = 0;
@@ -118,15 +133,15 @@ void renderRectangleBottom(Canvas* canvas, int left, int top, int height, int wi
 
   for(iterator = 0; iterator < width; iterator++ ){
     posToDrawAt = iterator + left + ((top + height-1)*maxWidth);
-    array[posToDrawAt] = '-';
+    array[posToDrawAt] = lineSymbol;
   }
 
-  array[edgeDrawBegin] = '+';
-  array[edgeDrawEnd] = '+';
+  array[edgeDrawBegin] = edgeSymbol;
+  array[edgeDrawEnd] = edgeSymbol;
 
 }
 
-void renderRectangleLeft(Canvas* canvas, int left, int top, int height){
+void renderRectangleLeft(Canvas* canvas, int left, int top, int height, char edgeSymbol, char lineSymbol){
   char* array = canvas->array;
   int maxWidth = canvas->dimension.width;
   int iterator = 0;
@@ -136,13 +151,13 @@ void renderRectangleLeft(Canvas* canvas, int left, int top, int height){
 
   for(iterator = 0; iterator < height-1; iterator++ ){
     posToDrawAt = ((iterator+top) * maxWidth) + left;
-    array[posToDrawAt] = '|';
+    array[posToDrawAt] = lineSymbol;
   }
 
-  array[edgeDrawBegin] = '+';
+  array[edgeDrawBegin] = edgeSymbol;
 }
 
-void renderRectangleRight(Canvas* canvas, int left, int top, int height, int width){
+void renderRectangleRight(Canvas* canvas, int left, int top, int height, int width, char edgeSymbol, char lineSymbol){
   char* array = canvas->array;
   int maxWidth = canvas->dimension.width;
   int iterator = 0;
@@ -152,8 +167,8 @@ void renderRectangleRight(Canvas* canvas, int left, int top, int height, int wid
 
   for(iterator = 0; iterator < height-1; iterator++ ){
     posToDrawAt = ((iterator+top) * maxWidth) + (left+width-1);
-    array[posToDrawAt] = '|';
+    array[posToDrawAt] = lineSymbol;
   }
 
-  array[edgeDrawBegin] = '+';
+  array[edgeDrawBegin] = edgeSymbol;
 }
