@@ -1,7 +1,7 @@
 #Renderay [![Build Status](https://travis-ci.org/xetra11/renderay.svg?branch=master)](https://travis-ci.org/xetra11/renderay)
 
 *Author: Patrick C. H.*  
-*Stable Release: 1.4.0*
+*Stable Release: 1.5.0*
 
 
 1. What is it?
@@ -190,6 +190,22 @@ void shapes_renderRectangle(Canvas* canvas, int left, int top, int height, int w
 >*width* - the maximal width of the rectangle  
 >######Returns:
 >*void* - nothing 
+
+```C
+void shapes_renderRectangleDOS(Canvas* canvas, int left, int top, int height, int width)
+```
+>######Description:
+>Renders a rectangle with given dimensions starting at the top and left position. Uses DOS ASCII to draw lines.
+**Warning** This will only work for Windows/DOS Consoles
+>######Parameters:
+>*canvas* - the canvas this function should render onto  
+>*left* - the left point to start rendering  
+>*top* - the top point to start rendering  
+>*height* - the maximal height of the rectangle  
+>*width* - the maximal width of the rectangle  
+>######Returns:
+>*void* - nothing 
+
 
 ```C
 void shapes_renderCircle(Canvas* canvas, int x, int y, int radius)
