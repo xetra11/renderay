@@ -2,8 +2,8 @@
 
 *Author: Patrick C. H.*  
 ***Stable Release: 1.5.1***  
-[[**Download .zip**]](https://github.com/xetra11/renderay/archive/v.1.5.1.zip)  
-[[**Download .tar.gz**]](https://github.com/xetra11/renderay/archive/v.1.5.1.tar.gz)
+[**[Download .zip]**](https://github.com/xetra11/renderay/archive/v.1.5.1.zip)  
+[**[Download .tar.gz]**](https://github.com/xetra11/renderay/archive/v.1.5.1.tar.gz)
 
 
 
