@@ -1,7 +1,7 @@
-#Renderay
+#Renderay [![Build Status](https://travis-ci.org/xetra11/renderay.svg?branch=master)](https://travis-ci.org/xetra11/renderay)
 
 *Author: Patrick C. H.*  
-*Stable Release: 1.4.0*
+*Stable Release: 1.5.0*
 
 
 1. What is it?
@@ -35,7 +35,7 @@ void printCanvas(Canvas* canvas);
 int main(void){
   Canvas* canvas = new_Canvas(ARRAY_HEIGHT, ARRAY_WIDTH); // create a canvas to render to
   shapes_renderRectangle(canvas, 0, 0, 5, 5); // render a shape to the canvas (see Submodules/Shapes for the API)
-  print(canvas); // print the canvas (not a build in function!)
+  printCanvas(canvas); // print the canvas (not a build in function!)
   
   return 0;
 }
@@ -192,14 +192,30 @@ void shapes_renderRectangle(Canvas* canvas, int left, int top, int height, int w
 >*void* - nothing 
 
 ```C
+void shapes_renderRectangleDOS(Canvas* canvas, int left, int top, int height, int width)
+```
+>######Description:
+>Renders a rectangle with given dimensions starting at the top and left position. Uses DOS ASCII to draw lines.  
+**Warning** This will only work for Windows/DOS Consoles
+>######Parameters:
+>*canvas* - the canvas this function should render onto  
+>*left* - the left point to start rendering  
+>*top* - the top point to start rendering  
+>*height* - the maximal height of the rectangle  
+>*width* - the maximal width of the rectangle  
+>######Returns:
+>*void* - nothing 
+
+
+```C
 void shapes_renderCircle(Canvas* canvas, int x, int y, int radius)
 ```
 >######Description:
 >Renders a circle with the mid point (x, y) and its radius. Still looks weird because of the width to height relation of the console.
 >######Parameters:
 >*canvas* - the canvas this function should render onto  
->*x* - the x position of the middle point
->*y* - the y position of the middle point
+>*x* - the x position of the middle point  
+>*y* - the y position of the middle point  
 >*radius* - the radius to draw to  
 >######Returns:
 >*void* - nothing 
