@@ -1,7 +1,10 @@
 #Renderay [![Build Status](https://travis-ci.org/xetra11/renderay.svg?branch=master)](https://travis-ci.org/xetra11/renderay)
 
 *Author: Patrick C. H.*  
-*Stable Release: 1.5.0*
+***Stable Release: 1.5.0***  
+[[**Download .zip**]](https://github.com/xetra11/renderay/archive/v.1.5.0.zip)  
+[[**Download .tar.gz**]](https://github.com/xetra11/renderay/archive/v.1.5.0.tar.gz)
+
 
 
 1. What is it?
