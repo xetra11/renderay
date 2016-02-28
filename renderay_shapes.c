@@ -13,8 +13,8 @@
 
 
  Author: Patrick C. Hoefer (xetra11)
- Version: 1.5.0
- Date: 27.02.2016
+ Version: 1.5.1
+ Date: 28.02.2016
  --------------------------------------------------------------------------------
                                    Description
  --------------------------------------------------------------------------------
@@ -86,13 +86,13 @@ void shapes_renderRectangle(Canvas* canvas, int left, int top, int height, int w
 
 void shapes_renderRectangleDOS(Canvas* canvas, int left, int top, int height, int width){
 
-  char hzSymbol = '\xB3';
-  char vtSymbol = '\xC4';
+  char vtSymbol = '\xB3';
+  char hzSymbol = '\xC4';
 
-  renderRectangleTop(canvas, left, top, width, '\xDA', hzSymbol );
-  renderRectangleBottom(canvas, left, top, height, width, '\xDA', hzSymbol);
-  renderRectangleLeft(canvas, left, top, height, '\xDA', vtSymbol);
-  renderRectangleRight(canvas, left, top, height, width, '\xDA', vtSymbol);
+  renderRectangleTop(canvas, left, top, width, '\xC5', hzSymbol );
+  renderRectangleBottom(canvas, left, top, height, width, '\xC5', hzSymbol);
+  renderRectangleLeft(canvas, left, top, height, '\xC5', vtSymbol);
+  renderRectangleRight(canvas, left, top, height, width, '\xC5', vtSymbol);
 }
 
 void renderRectangle(Canvas* canvas, int left, int top, int height, int width, char edgeSymbol){
