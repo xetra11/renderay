@@ -1,11 +1,13 @@
 #Renderay [![Build Status](https://travis-ci.org/xetra11/renderay.svg?branch=master)](https://travis-ci.org/xetra11/renderay)
 
+<a href="http://stackoverflow.com/users/5967828/xetra11">
+<img src="http://stackoverflow.com/users/flair/5967828.png?theme=dark" width="208" height="58" alt="profile for xetra11 at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for xetra11 at Stack Overflow, Q&amp;A for professional and enthusiast programmers">
+</a>
+
 *Author: Patrick C. H.*  
 ***Stable Release: 1.5.1***  
 [**[Download .zip]**](https://github.com/xetra11/renderay/archive/v.1.5.1.zip)  
 [**[Download .tar.gz]**](https://github.com/xetra11/renderay/archive/v.1.5.1.tar.gz)
-
-
 
 1. What is it?
 2. How to use?
