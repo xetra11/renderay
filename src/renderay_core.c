@@ -21,28 +21,14 @@
  The core library for renderay holds everything you need to render in a simple
  way within an array. To provide an array to which renderay can render into you
  have to create a Canvas type and pass it to the render functions
- ----------------------------------------------------------------------------------------------------------
-                                                    API
- ----------------------------------------------------------------------------------------------------------
- Canvas* new_Canvas(int height, int width)
- void canvas_renderLineHorizontalCustom(Canvas* canvas, char fillSymbol,int offset, int row, int count);
- void canvas_renderLineVerticalCustom(Canvas* canvas, char fillSymbol, int offset, int column, int count);
- void canvas_renderLineHorizontal(Canvas* canvas, char fillSymbol, int row);
- void canvas_renderLineVertical(Canvas* canvas, char fillSymbol, int column);
- void canvas_renderPoint(Canvas* canvas, char fillSymbol, int x, int y);
- void canvas_renderLine(Canvas* canvas, char fillSymbol, int startX, int startY, int endX, int endY);
- void canvas_fill(Canvas* canvas, char fillSymbol);
- - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- Please read the DOC.md to get the whole documentation for renderay
- =========================================================================================================>
 */
 
+#include "renderay_core.h"
 #include <stdarg.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include "renderay_core.h"
 
-int determineSign(int num);
+int determinnneSign(int num);
 
 Canvas* new_Canvas(int height, int width){
   ArrayDimension dimension ;
@@ -73,19 +59,22 @@ void canvas_fill(Canvas* newCanvas, char fillSymbol){
   }
 }
 
-void canvas_renderPoint(Canvas* canvas, char fillSymbol, int x, int y){
+void canvas_renderPointByPoint(Canvas* canvas, char fillSymbol, Point point){
   char* arrayToFill = canvas->array;
   int maxWidth = canvas->dimension.width;
   int maxHeight = canvas->dimension.height;
+  int x = point.x;
+  int y = point.y;
+
 
   // check for invalid input
   if(x < 0 || y < 0){
-    printf("Invalid parameter for (canvas_renderPoint): must not be lesser than zero!\n");
+    printf("Invalid parameter for (canvas_renderPointByPoint): must not be lesser than zero!\n");
     return;
   }
 
   if(x > maxWidth || y > maxHeight){
-    printf("Invalid parameter for (canvas_renderPoint): higher than canvas boundaries!\n");
+    printf("Invalid parameter for (canvas_renderPointByPoint): higher than canvas boundaries!\n");
     return;
   }
 
@@ -94,7 +83,28 @@ void canvas_renderPoint(Canvas* canvas, char fillSymbol, int x, int y){
   }
 }
 
-void canvas_renderLine(Canvas* canvas, char fillSymbol, int xStart, int yStart, int xEnd, int yEnd){
+void canvas_renderPointByCoord(Canvas* canvas, char fillSymbol, int x, int y){
+  char* arrayToFill = canvas->array;
+  int maxWidth = canvas->dimension.width;
+  int maxHeight = canvas->dimension.height;
+  
+  // check for invalid input
+  if(x < 0 || y < 0){
+    printf("Invalid parameter for (canvas_renderPointByPoint): must not be lesser than zero!\n");
+    return;
+  }
+
+  if(x > maxWidth || y > maxHeight){
+    printf("Invalid parameter for (canvas_renderPointByPoint): higher than canvas boundaries!\n");
+    return;
+  }
+
+  if(x <= maxWidth && y <= maxHeight){
+    arrayToFill[x+(y*maxWidth)] = fillSymbol;
+  }
+}
+
+void canvas_renderLine(Canvas* canvas, char fillSymbol, Line line){
   int iterator;
   //paralell steps
   int paraX;
@@ -103,15 +113,16 @@ void canvas_renderLine(Canvas* canvas, char fillSymbol, int xStart, int yStart, 
   int diagX;
   int diagY;
   //default coords
-  int x_start  = xStart;
-  int x_end    = xEnd;
-  int y_start  = yStart;
-  int y_end    = yEnd;
-  int x        = x_start;
-  int y        = y_start;
+  int x_start  = line.start.x;
+  int x_end    = line.end.x;
+  int y_start  = line.start.y;
+  int y_end    = line.end.y;
+  Point point;
+  point.x      = x_start;
+  point.y      = y_start;
 
   // check for invalid input
-  if(xStart < 0 || yStart < 0 || xEnd < 0 || yEnd < 0){
+  if(x_start < 0 || y_start < 0 || x_end < 0 || y_end < 0){
     printf("Invalid parameter for (canvas_renderLine): must not be lesser than zero!\n");
     return;
   }
@@ -151,7 +162,7 @@ void canvas_renderLine(Canvas* canvas, char fillSymbol, int xStart, int yStart, 
 
   //init loop
   error = slowError/2;
-  canvas_renderPoint(canvas, fillSymbol, x, y);
+  canvas_renderPointByPoint(canvas, fillSymbol, point);
 
   /* count renders */
   for(iterator = 0; iterator < slowError; ++iterator){
@@ -161,14 +172,14 @@ void canvas_renderLine(Canvas* canvas, char fillSymbol, int xStart, int yStart, 
       /* make error pos again */
       error += slowError;
       /* one step to slower direction */
-      x += diagX;
-      y += diagY;
+      point.x += diagX;
+      point.y += diagY;
     }else{
       /* one step in fast direction */
-      x += paraX;
-      y += paraY;
+      point.x += paraX;
+      point.y += paraY;
     }
-    canvas_renderPoint(canvas, fillSymbol, x, y);
+    canvas_renderPointByPoint(canvas, fillSymbol, point);
   }
 }
 

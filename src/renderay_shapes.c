@@ -43,19 +43,26 @@ void renderRectangleLeft(Canvas* canvas, int left, int top, int height, char edg
 void renderRectangleRight(Canvas* canvas, int left, int top, int height, int width, char edgeSymbol, char vtSymbol);
 void renderRectangle(Canvas* canvas, int left, int top, int height, int width, char edgeSymbol);
 
-void shapes_renderCircle(Canvas* canvas, int x_mid, int y_mid, int radius){
+void shapes_renderCircle(Canvas* canvas, Circle circle){
 
-  int error = 1 - radius;
+  int error = 1 - circle.radius;
   int diagX = 0;
-  int diagY = -2 * radius;
+  int diagY = -2 * circle.radius;
   int x = 0;
-  int y = radius;
+  int y = circle.radius;
+  Point point;
 
-  // render anchor points (top, left, right, bottom)
-  canvas_renderPoint(canvas,'+', x_mid, y_mid + radius);
-  canvas_renderPoint(canvas,'+', x_mid, y_mid - radius);
-  canvas_renderPoint(canvas,'+', x_mid + radius, y_mid);
-  canvas_renderPoint(canvas,'+', x_mid - radius, y_mid);
+  /* render anchor points (top, left, right, bottom) */
+  point.x = circle.center.x;
+  point.y = circle.center.y + circle.radius;
+  canvas_renderPointByPoint(canvas,'+', point);
+  point.y = circle.center.y - circle.radius;
+  canvas_renderPointByPoint(canvas,'+', point);
+  point.x = circle.center.x + circle.radius;
+  point.y = circle.center.y;
+  canvas_renderPointByPoint(canvas,'+', point);
+  point.x = circle.center.x - circle.radius;
+  canvas_renderPointByPoint(canvas,'+', point);
 
   while(x < y){
     if(error >= 0){
@@ -68,14 +75,14 @@ void shapes_renderCircle(Canvas* canvas, int x_mid, int y_mid, int radius){
     error += diagX + 1;
   }
 
-  canvas_renderPoint(canvas, '+', x_mid + x, y_mid + y);
-  canvas_renderPoint(canvas, '+', x_mid - x, y_mid + y);
-  canvas_renderPoint(canvas, '+', x_mid + x, y_mid - y);
-  canvas_renderPoint(canvas, '+', x_mid - x, y_mid - y);
-  canvas_renderPoint(canvas, '+', x_mid + y, y_mid + x);
-  canvas_renderPoint(canvas, '+', x_mid - y, y_mid + x);
-  canvas_renderPoint(canvas, '+', x_mid + y, y_mid - x);
-  canvas_renderPoint(canvas, '+', x_mid - y, y_mid - x);
+  canvas_renderPointByCoord(canvas, '+', circle.center.x + x, circle.center.y + y);
+  canvas_renderPointByCoord(canvas, '+', circle.center.x - x, circle.center.y + y);
+  canvas_renderPointByCoord(canvas, '+', circle.center.x + x, circle.center.y - y);
+  canvas_renderPointByCoord(canvas, '+', circle.center.x - x, circle.center.y - y);
+  canvas_renderPointByCoord(canvas, '+', circle.center.x + y, circle.center.y + x);
+  canvas_renderPointByCoord(canvas, '+', circle.center.x - y, circle.center.y + x);
+  canvas_renderPointByCoord(canvas, '+', circle.center.x + y, circle.center.y - x);
+  canvas_renderPointByCoord(canvas, '+', circle.center.x - y, circle.center.y - x);
 
 }
 

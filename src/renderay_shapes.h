@@ -37,8 +37,14 @@
 
 #include "renderay_core.h"
 
+typedef struct{
+  Point center;
+  int radius;
+}Circle;
+
+
 void shapes_renderRectangle(Canvas* canvas, int x, int y, int height, int width);
 void shapes_renderRectangleDOS(Canvas* canvas, int x, int y, int height, int width);
-void shapes_renderCircle(Canvas* canvas, int x, int y, int radius);
+void shapes_renderCircle(Canvas* canvas, Circle circle);
 
 #endif
