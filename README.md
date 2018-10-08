@@ -1,4 +1,4 @@
-#Renderay [![Build Status](https://travis-ci.org/xetra11/renderay.svg?branch=master)](https://travis-ci.org/xetra11/renderay)
+# Renderay [![Build Status](https://travis-ci.org/xetra11/renderay.svg?branch=master)](https://travis-ci.org/xetra11/renderay)
 
 <a href="http://stackoverflow.com/users/5967828/xetra11">
 <img src="http://stackoverflow.com/users/flair/5967828.png?theme=dark" width="208" height="58" alt="profile for xetra11 at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for xetra11 at Stack Overflow, Q&amp;A for professional and enthusiast programmers">
@@ -26,7 +26,7 @@ If you just want to draw horizontal or vertical lines and/or plain single symbol
 
 If you might want to already have rectangles being rendered out of the box, then you should include **renderay_shapes** as well.
 
-#####Example:
+##### Example:
 
 ```C
 #include "renderay_core.h"
@@ -61,7 +61,7 @@ for(y = 0; y < maxHeight; y++){
 ```
 
 
-#####Output:
+##### Output:
 ```
 +---+                                   
 |   |                                   
@@ -70,114 +70,114 @@ for(y = 0; y < maxHeight; y++){
 +---+ 
 ```
 
-###3. Modules
-####1. Core
+### 3. Modules
+#### 1. Core
 
 The core API provides the basic functionality to render onto a canvas. You can draw a vertical, horizontal line with ascii characters or just a point. Every function needs the canvas as a parameter.
 ##### Functions:
 ```C
 Canvas* new_Canvas(int height, int width)
 ```
->######Description:
+>###### Description:
 >First step function to get renderay to work. This will create a canvas to render onto. This canvas will be passed to every of the following functions.
->######Parameters:
+>###### Parameters:
 >*height* - set the height of the canvas  
 >*width* - set the width of the canvas  
->######Returns:
+>###### Returns:
 >*Canvas** - the canvas "object" you can use to render onto  
 
 ```C
 void canvas_fill(Canvas* canvas, char fillSymbol)
 ```
->######Description:
+>###### Description:
 >This function will fill the whole canvas with the given fill symbol. Good practice to measure the positions of rendered objects in a canvas is to give '.' as fill symbol. This will fill the whole canvas with dots where you can check if the object is in the wanted position i.e.
->######Parameters:
+>###### Parameters:
 >*canvas* - the canvas this function should render onto  
 >*fillSymbol* - the ascii character that should be rendered  
->######Returns:
+>###### Returns:
 >*void* - nothing 
 
 ```C
 void canvas_renderLineHorizontalCustom(Canvas* canvas, char fillSymbol, int offset, int row, int count)
 ```
->######Description:
+>###### Description:
 >Renders a horizontal line onto the canves starting at the given offset and row. The count you provide will determine the maximal length of the line.
->######Parameters:
+>###### Parameters:
 >*canvas* - the canvas this function should render onto  
 >*fillSymbol* - the ascii character that should be rendered  
 >*offset* - the offset position (horizontal) the rendering should start at 
 >*row* - the row the rendering should start at  
 >*count* - the amount of characters that should be rendered  
->######Returns:
+>###### Returns:
 >*void* - nothing  
 
 ```C
 void canvas_renderLineVerticalCustom(Canvas* canvas, char fillSymbol, int offset, int column, int count)
 ```
->######Description:
+>###### Description:
 >Renders a vertical line onto the canves starting at the given offset and column. The count you provide will determine the maximal length of the line.
->######Parameters:
+>###### Parameters:
 >*canvas* - the canvas this function should render onto  
 >*fillSymbol* - the ascii character that should be rendered  
 >*offset* - the offset position (vertical) the rendering should start at 
 >*column* - the column the rendering should start at  
 >*count* - the amount of characters that should be rendered  
->######Returns:
+>###### Returns:
 >*void* - nothing  
 
 ```C
 void canvas_renderLineHorizontal(Canvas* canvas, char fillSymbol, int row)
 ```
->######Description:
+>###### Description:
 >Renders a horizontal line from the most left to the most right of the canvas width. You only need to provide the row where the rendering should start at.
->######Parameters:
+>###### Parameters:
 >*canvas* - the canvas this function should render onto  
 >*fillSymbol* - the ascii character that should be rendered  
 >*row* - the row the line should be rendered in  
->######Returns:
+>###### Returns:
 >*void* - nothing  
 
 ```C
 void canvas_renderLineVertical(Canvas* canvas, char fillSymbol, int column)
 ```
->######Description:
+>###### Description:
 >Renders a vertical line from the top to the bottom of the canvas. You only need to provide the column where the rendering should start at.
->######Parameters:
+>###### Parameters:
 >*canvas* - the canvas this function should render onto  
 >*fillSymbol* - the ascii character that should be rendered  
 >*column* - the column the line should be rendered in  
->######Returns:
+>###### Returns:
 >*void* - nothing 
 
 ```C
 void canvas_renderLine(Canvas* canvas, char fillSymbol, int startX, int startY, int endX, int endY)
 ```
->######Description:
+>###### Description:
 >Renders a line from the given start (startX, startY) to the destination (endX, endY)
->######Parameters:
+>###### Parameters:
 >*canvas* - the canvas this function should render onto  
 >*fillSymbol* - the ascii character that should be rendered  
 >*startX* - the x position to start the line at  
 >*startY* - the y position to start the line at  
 >*endX* - the x position of the lines destination   
 >*endY* - the y position of the lines destination     
->######Returns:
+>###### Returns:
 >*void* - nothing 
 
 ```C
 void canvas_renderPoint(Canvas* canvas, char fillSymbol, int x, int y)
 ```
->######Description:
+>###### Description:
 >Renders the given fill symbol to a specific positon(x,y) onto the canvas.
->######Parameters:
+>###### Parameters:
 >*canvas* - the canvas this function should render onto  
 >*fillSymbol* - the ascii character that should be rendered  
 >*x* - the x position of the point  
 >*y* - the y position of the point  
->######Returns:
+>###### Returns:
 >*void* - nothing 
 
-####1. Shapes
+#### 1. Shapes
 
 The shapes module provides some predefined solutions to render simple shapes like rectangles and circles. It therefore uses the functions of renderay-core so its depenend on that module.
 ##### Functions:
@@ -185,44 +185,44 @@ The shapes module provides some predefined solutions to render simple shapes lik
 ```C
 void shapes_renderRectangle(Canvas* canvas, int left, int top, int height, int width)
 ```
->######Description:
+>###### Description:
 >Renders a rectangle with given dimensions starting at the top and left position.
->######Parameters:
+>###### Parameters:
 >*canvas* - the canvas this function should render onto  
 >*left* - the left point to start rendering  
 >*top* - the top point to start rendering  
 >*height* - the maximal height of the rectangle  
 >*width* - the maximal width of the rectangle  
->######Returns:
+>###### Returns:
 >*void* - nothing 
 
 ```C
 void shapes_renderRectangleDOS(Canvas* canvas, int left, int top, int height, int width)
 ```
->######Description:
+>###### Description:
 >Renders a rectangle with given dimensions starting at the top and left position. Uses DOS ASCII to draw lines.  
 **Warning** This will only work for Windows/DOS Consoles
->######Parameters:
+>###### Parameters:
 >*canvas* - the canvas this function should render onto  
 >*left* - the left point to start rendering  
 >*top* - the top point to start rendering  
 >*height* - the maximal height of the rectangle  
 >*width* - the maximal width of the rectangle  
->######Returns:
+>###### Returns:
 >*void* - nothing 
 
 
 ```C
 void shapes_renderCircle(Canvas* canvas, int x, int y, int radius)
 ```
->######Description:
+>###### Description:
 >Renders a circle with the mid point (x, y) and its radius. Still looks weird because of the width to height relation of the console.
->######Parameters:
+>###### Parameters:
 >*canvas* - the canvas this function should render onto  
 >*x* - the x position of the middle point  
 >*y* - the y position of the middle point  
 >*radius* - the radius to draw to  
->######Returns:
+>###### Returns:
 >*void* - nothing 
 
 
